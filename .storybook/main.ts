@@ -9,7 +9,9 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
+    '@storybook/addon-a11y',
+    '@storybook/addon-storysource'
   ],
   "framework": {
     "name": "@storybook/nextjs",
@@ -19,4 +21,4 @@ const config: StorybookConfig = {
     "autodocs": "tag"
   }
 };
-export default config;
+export default config
