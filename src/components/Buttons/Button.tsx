@@ -6,16 +6,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVarient;
   size?: ButtonSize;
   color?: ButtonColor;
+  full?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   variant = "filled",
   size = "md",
   color = "primary",
+  full = false,
   children,
   ...props
 }) => {
-  const baseStyles = `font-button rounded font-semibold`;
+  const baseStyles = `inline-flex items-center font-button rounded font-semibold`;
   const sizeStyles = {
     sm: "py-1 px-2 text-sm",
     md: "py-2 px-4",
@@ -33,7 +35,9 @@ export const Button: React.FC<ButtonProps> = ({
     },
   };
 
-  const buttonStyle = `${baseStyles} ${sizeStyles[size]} ${colorStyles[color][variant]}`;
+  const width = full ? "w-full" : "w-max";
+
+  const buttonStyle = `${baseStyles} ${sizeStyles[size]} ${colorStyles[color][variant]} ${width}`;
   return (
     <button className={["storybook-button", buttonStyle].join(" ")} {...props}>
       {children}

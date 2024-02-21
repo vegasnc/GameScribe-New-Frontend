@@ -1,9 +1,22 @@
 import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
-
+import { motion } from "framer-motion";
 import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import {
+  FloatingImage,
+  SkullVector,
+} from "~/components/Background/FloatingImage";
+import {
+  AppleIcon,
+  ChevronRight,
+  CollectionsIcon,
+  DiscordIcon,
+  GoogleIcon,
+  InformationIcon,
+  ShieldIcon,
+} from "~/components/Icons";
+import { Button } from "~/components/Buttons/Button";
 
 export default async function Home() {
   noStore();
@@ -11,54 +24,81 @@ export default async function Home() {
   const session = await getServerAuthSession();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
+    <main className="relative flex min-h-screen flex-col items-center overflow-hidden bg-[#070C15]">
+      <div className="jusfify-center relative flex w-full flex-row">
+        <FloatingImage />
+        <div className="z-30 flex w-full flex-row justify-center">
+          <div className="w-max">
+            <h1 className="absolute left-[74px] font-stat text-[32px] font-bold leading-[110%] text-bg-80 sm:top-[48px] 2xl:top-[58px]">
+              GAMESCRIBE
+            </h1>
+          </div>
+          <div className="flex w-full flex-row justify-center sm:py-[48px] 2xl:px-[74px] 2xl:py-[58px]">
+            <div className="z-30 flex w-[500px] shrink-0 flex-col items-center justify-between rounded-[52px] bg-bg-80 p-[52px] shadow-lg">
+              <div className="flex w-full flex-col items-center">
+                <SkullVector />
+                <h1 className="w-[234px] text-center font-stat text-[32px] font-bold leading-[110%]">
+                  WELCOME TO GAMESCRIBE
+                </h1>
+              </div>
+              <div className="jusfify-center flex w-[380px] flex-col items-center gap-[20px] p-[36px]">
+                <p className="font-bold text-theme">Sign up to</p>
+                <div className="grid grid-cols-6 gap-4">
+                  <div className="flex items-center">
+                    <InformationIcon />
+                  </div>
+                  <p className="col-span-5">
+                    Keep track of your browsing history, favorites
+                  </p>
+                  <div className="flex items-center">
+                    <ShieldIcon />
+                  </div>
+                  <p className="col-span-5">
+                    Connect with friends on GameScribe
+                  </p>
+                  <div className="flex items-center">
+                    <CollectionsIcon />
+                  </div>
+                  <p className="col-span-5">
+                    Access to your personal collections and achievements
+                  </p>
+                </div>
+              </div>
+              <div className="flex w-[380px] flex-col gap-[10px]">
+                <button className="hover:bg-[#5438c780] flex h-[42px] w-full items-center justify-center gap-[4px] rounded-[8px] bg-theme font-bold text-bg duration-[.2s] tranisition-ease">
+                  Sign up <ChevronRight />{" "}
+                </button>
+                <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#fff] font-bold text-text">
+                  <div className="flex w-full items-center justify-center gap-[10px]">
+                    <GoogleIcon />
+                    Continue with Google
+                  </div>
+                </button>
+                <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#070C15] font-bold text-bg">
+                  <div className="flex w-full items-center justify-center gap-[10px]">
+                    <AppleIcon />
+                    Continue with Apple
+                  </div>
+                </button>
+                <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#5865F2] font-bold text-bg">
+                  <div className="flex w-full items-center justify-center gap-[10px]">
+                    <DiscordIcon />
+                    Continue with Discord
+                  </div>
+                </button>
+              </div>
+              <div className="mt-[20px] flex flex-col items-center gap-[10px]">
+                <a className="cursor-pointer font-bold text-theme hover:underline">
+                  Sign in
+                </a>
+                <p className="text-gray font-bold">or</p>
+                <a className="cursor-pointer font-bold text-theme hover:underline">
+                  Continue without an account
+                </a>
+              </div>
             </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
-
-          <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-center text-2xl text-white">
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Link>
           </div>
         </div>
-
-        <CrudShowcase />
       </div>
     </main>
   );
