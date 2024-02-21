@@ -14,7 +14,7 @@ const TestPage = () => {
   useHotkeys("meta+return", handleShortcut);
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-20 bg-background-light">
+    <div className="flex h-screen flex-col items-center justify-center gap-20 bg-bg">
       <h1 className="text-3xl font-bold">GameScribe</h1>
       <Button>Rag 123</Button>
       <Shortcut keys={["⌘A", "⌘↩"]} />

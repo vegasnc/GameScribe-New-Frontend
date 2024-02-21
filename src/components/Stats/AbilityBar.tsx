@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ABILITY_BAR_DEFAULT, iAbility } from "./constants";
+import type { iAbility } from "./constants";
 import Ability from "./Ability";
 
 interface AbilityBarProps {

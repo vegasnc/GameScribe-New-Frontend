@@ -15,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseStyles = `font-button rounded font-semibold text-light-text-100-light`;
+  const baseStyles = `font-button rounded font-semibold text-bg`;
   const sizeStyles = {
     sm: "py-1 px-2 text-sm",
     md: "py-2 px-4",
@@ -24,14 +24,14 @@ export const Button: React.FC<ButtonProps> = ({
 
   const colorStyles = {
     primary: {
-      filled: "bg-theme-100-light text-dark-text-100-dark",
+      filled: "bg-theme text-text",
       outlined:
-        "bg-transparent hover:bg-theme-100-light text-primary-light border-primary-light border",
+        "bg-transparent hover:bg-theme text-theme border-theme border",
     },
     secondary: {
-      filled: "bg-theme-100-light text-dark-text-100-light",
+      filled: "bg-theme text-text",
       outlined:
-        "bg-transparent hover:bg-theme-100-light text-dark-text-100-light border-theme-100-light border",
+        "bg-transparent hover:bg-theme text-text border-theme border",
     },
   };
 

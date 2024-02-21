@@ -3,10 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-theme: 252deg 56% 50%;
+    --color-text: 219deg 50% 5%;
+    --color-bg: 30deg 100% 97%;
+    --color-gray: 219deg 50% 5%;
+  }
+
+  :root[data-theme="dark"] {
+    --color-theme: 252deg 72% 63%;
+    --color-text: 30deg 100% 97%;
+    --color-bg: 219deg 50% 5%;
+    --color-gray: 30deg 100% 97%;
+  }
+
   body {
-    @apply font-sans text-[18px]
+    @apply font-sans text-[18px];
   }
   button {
-    @apply font-button
+    @apply font-button;
   }
 }
