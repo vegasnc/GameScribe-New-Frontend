@@ -19,7 +19,7 @@ const Ability = ({ ability }: AbilityProps) => {
       <div className="flex w-full flex-row justify-center rounded-[4px] border border-[1px] border-dashed border-gray-ex-light text-[18px] group-hover:border-theme">
         {isNumber(ability.score)}
       </div>
-      <div className="flex w-full cursor-pointer flex-row items-center justify-center gap-[4px] rounded-[4px] bg-gray-mid px-[6px] py-[4px] text-[14px] text-text hover:animate-stat-slide group-hover:bg-theme group-hover:text-bg">
+      <div className="flex w-full cursor-pointer flex-row items-center justify-center gap-[4px] rounded-[4px] bg-gray-mid px-[6px] py-[4px] text-[14px] text-text hover:animate-stat-slide group-hover:bg-theme group-hover:text-text">
         <p className="ability-modifier translate-x-2 transition-transform group-hover:translate-x-0">
           {isNumber(ability.modifier)}
         </p>

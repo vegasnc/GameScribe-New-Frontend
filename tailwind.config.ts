@@ -35,7 +35,7 @@ export default {
       "theme-dark": "hsl(var(--color-theme) / .60)",
 
       // text
-      text: "hsl(var(--color-text) / <alpha-value>)",
+      text: "hsl(var(--color-text))",
       "text-60": "hsl(var(--color-text) / .60)",
       "text-40": "hsl(var(--color-text) / .40)",
 

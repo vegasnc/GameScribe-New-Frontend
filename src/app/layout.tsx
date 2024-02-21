@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Inter, Lato, Barlow_Condensed } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { ColorModeProvider } from "~/providers/ColorModeProvider";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -15,15 +16,15 @@ const lato = Lato({
   weight: "700",
   subsets: ["latin"],
   variable: "--button-font",
-  display: "swap"
-})
+  display: "swap",
+});
 
 const barlow_condensed = Barlow_Condensed({
   weight: "400",
   subsets: ["latin"],
   variable: "--stat-font",
   display: "swap",
-})
+});
 
 export const metadata = {
   title: "Create T3 App",
@@ -37,9 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}
+    >
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <ColorModeProvider>{children}</ColorModeProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );
