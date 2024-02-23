@@ -10,7 +10,7 @@ import {
   AppleIcon,
   DiscordIcon,
 } from "~/components/Icons";
-import { Options } from "~/components/Forms/Options";
+import { Options } from "./Options";
 
 export const WelcomeForm = () => {
   const router = useRouter();

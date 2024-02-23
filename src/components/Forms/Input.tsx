@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import type { InputHTMLAttributes } from "react";
 
+// TODO: add error styles
+
 const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   (props, ref) => {
     const { ...rest } = props;

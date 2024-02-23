@@ -1,19 +1,32 @@
+"use client";
+
 // types of theme modes: dark or light
 type mode = "light" | "dark";
 
+// decorate local storage for next server
+const withClient = <T>(cb: () => T): (() => T | null) => {
+  if (typeof window !== "undefined") {
+    return cb;
+  } else {
+    return () => null;
+  }
+};
+
 // get theme from local storage
 const getThemeFromStorage = (): string | null => {
-  return localStorage.getItem("theme");
+  return withClient(() => localStorage.getItem("theme"))();
 };
 
 // set theme to local storage
 const setThemeToStorage = (theme: mode): void => {
-  localStorage.setItem("theme", theme);
+  withClient(() => localStorage.setItem("theme", theme))();
 };
 
 // set theme to document root[data-theme]
 const setThemeToDocument = (theme: mode): void => {
-  document.documentElement.setAttribute("data-theme", theme as string);
+  withClient(() =>
+    document.documentElement.setAttribute("data-theme", theme as string),
+  )();
 };
 
 // toggle theme between light and dark

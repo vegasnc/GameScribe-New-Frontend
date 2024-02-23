@@ -9,4 +9,6 @@ export interface iAccountDetails {
 export interface iAuthContext {
   accountDetails: iAccountDetails;
   setAccountDetails: Dispatch<SetStateAction<iAccountDetails>>;
+  handleLogin: (account: Omit<iAccountDetails, "nickname">) => void;
+  handleRegister: (account: iAccountDetails) => void;
 }
