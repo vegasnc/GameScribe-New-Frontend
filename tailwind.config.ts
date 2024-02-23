@@ -1,5 +1,6 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+const colors = require('tailwindcss/colors');
 
 export default {
   content: ["./src/**/*.tsx"],
@@ -26,6 +27,7 @@ export default {
         },
       },
     },
+    // eslint-disable-next-line
     colors: {
       // theme
       theme: "hsl(var(--color-theme) / <alpha-value>)",
@@ -48,7 +50,8 @@ export default {
       "gray-ex-light": "hsl(var(--color-gray) / .05)",
       "gray-mid": "hsl(var(--color-gray) / .10)",
       "gray-light": "hsl(var(--color-gray) / .20)",
+      ...colors,
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 } satisfies Config;

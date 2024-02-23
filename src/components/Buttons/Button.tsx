@@ -1,4 +1,41 @@
-type ButtonVarient = "filled" | "outlined";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  disabled?: boolean;
+  loading?: boolean;
+  children: React.ReactNode;
+}
+
+export const Button = ({
+  disabled = false,
+  loading = false,
+  children,
+  ...rest
+}: ButtonProps) => {
+  const baseStyles = `tranisition-ease flex h-[42px] w-full items-center justify-center gap-[4px] rounded-[8px] bg-theme font-bold text-bg duration-[.2s]`;
+  const disabledStyles = `bg-gray-light cursor-not-allowed`;
+  const enabledStyles = `bg-theme hover:bg-[#5438c780]`;
+
+  // TODO: spinner component
+  if (loading)
+    return (
+      <button
+        className={`${baseStyles} ${disabled ? disabledStyles : enabledStyles}`}
+      {...rest}
+      >
+        loading...
+      </button>
+    );
+  else
+    return (
+      <button
+        className={`${baseStyles} ${disabled ? disabledStyles : enabledStyles}`}
+      {...rest}
+      >
+        {children}
+      </button>
+    );
+};
+
+/* type ButtonVarient = "filled" | "outlined";
 type ButtonSize = "sm" | "md" | "lg";
 type ButtonColor = "primary" | "secondary";
 
@@ -43,4 +80,4 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
+}; */

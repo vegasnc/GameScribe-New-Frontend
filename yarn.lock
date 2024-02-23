@@ -1214,6 +1214,11 @@
   resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.1.tgz"
   integrity sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==
 
+"@hookform/resolvers@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-3.3.4.tgz"
+  integrity sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==
+
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.14"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.14.tgz"
@@ -2767,6 +2772,13 @@
   integrity sha512-90TNffS17vjkQwfYyMUb4Zw9yqHwFV40f78qFug4JiQa5+N6DydTdlLOpzOcj8Cna/qpAVDwMSypofF/TVQDuA==
   dependencies:
     "@t3-oss/env-core" "0.7.3"
+
+"@tailwindcss/forms@^0.5.7":
+  version "0.5.7"
+  resolved "https://registry.npmjs.org/@tailwindcss/forms/-/forms-0.5.7.tgz"
+  integrity sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
 
 "@tanstack/query-core@4.36.1":
   version "4.36.1"
@@ -7423,6 +7435,11 @@ min-indent@^1.0.0, min-indent@^1.0.1:
   resolved "https://registry.npmjs.org/min-indent/-/min-indent-1.0.1.tgz"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
 
+mini-svg-data-uri@^1.2.3:
+  version "1.4.4"
+  resolved "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz"
+  integrity sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==
+
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz"
@@ -8656,6 +8673,11 @@ react-element-to-jsx-string@^15.0.0:
     is-plain-object "5.0.0"
     react-is "18.1.0"
 
+react-hook-form@^7.0.0, react-hook-form@^7.50.1:
+  version "7.50.1"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.50.1.tgz"
+  integrity sha512-3PCY82oE0WgeOgUtIr3nYNNtNvqtJ7BZjsbxh6TnYNbXButaD5WpjOmTjdxZfheuHKR68qfeFnEDVYoSSFPMTQ==
+
 react-hotkeys-hook@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/react-hotkeys-hook/-/react-hotkeys-hook-4.5.0.tgz"
@@ -8714,7 +8736,7 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-"react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0", "react@^16.14.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.8.0, react@>=16.8.1, "react@16.8.0 - 18", react@18.2.0:
+"react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0", "react@^16.14.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18", react@^18.0.0, react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16, react@>=16.8.0, react@>=16.8.1, "react@16.8.0 - 18", react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -9719,7 +9741,7 @@ synchronous-promise@^2.0.15:
   resolved "https://registry.npmjs.org/synchronous-promise/-/synchronous-promise-2.0.17.tgz"
   integrity sha512-AsS729u2RHUfEra9xJrE39peJcc2stq2+poBXX8bcM08Y6g9j/i/PUzwNQqkaJde7Ntg1TO7bSREbR5sdosQ+g==
 
-tailwindcss@^3.3.5:
+tailwindcss@^3.3.5, "tailwindcss@>=3.0.0 || >= 3.0.0-alpha.1":
   version "3.4.1"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.1.tgz"
   integrity sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==
