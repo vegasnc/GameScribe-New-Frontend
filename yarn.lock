@@ -5791,6 +5791,11 @@ fetch-retry@^5.0.2:
   resolved "https://registry.npmjs.org/fetch-retry/-/fetch-retry-5.0.6.tgz"
   integrity sha512-3yurQZ2hD9VISAhJJP9bpYFNQrHHBXE2JxxjY5aLEcDi46RmAzJE2OC9FAde0yis5ElW0jTTzs0zfg/Cca4XqQ==
 
+fflate@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.npmjs.org/fflate/-/fflate-0.4.8.tgz"
+  integrity sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"
@@ -8341,6 +8346,14 @@ postcss@8.4.31:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+posthog-js@^1.108.3:
+  version "1.108.3"
+  resolved "https://registry.npmjs.org/posthog-js/-/posthog-js-1.108.3.tgz"
+  integrity sha512-Vi9lX/MhovsKIEdj2aJ5ioku9U/eMGY8/DzKf4EpyrElxPPdabAdCDRUa81eAqxC6npkOpkHskawUPLg20le4Q==
+  dependencies:
+    fflate "^0.4.8"
+    preact "^10.19.3"
+
 preact-render-to-string@^5.1.19:
   version "5.2.6"
   resolved "https://registry.npmjs.org/preact-render-to-string/-/preact-render-to-string-5.2.6.tgz"
@@ -8348,7 +8361,7 @@ preact-render-to-string@^5.1.19:
   dependencies:
     pretty-format "^3.8.0"
 
-preact@^10.6.3, preact@>=10:
+preact@^10.19.3, preact@^10.6.3, preact@>=10:
   version "10.19.3"
   resolved "https://registry.npmjs.org/preact/-/preact-10.19.3.tgz"
   integrity sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==

@@ -4,6 +4,8 @@ import { Inter, Lato, Barlow_Condensed } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ColorModeProvider } from "~/providers/ColorModeProvider";
+import { PHProvider } from "~/providers/PostHogProvider";
+import PostHogPageView from "./PostHogPageView";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -13,7 +15,7 @@ const inter = Inter({
 });
 
 const lato = Lato({
-  weight: "700",
+  weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--button-font",
   display: "swap",
@@ -42,11 +44,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}
     >
-      <body>
-        <TRPCReactProvider>
-          <ColorModeProvider>{children}</ColorModeProvider>
-        </TRPCReactProvider>
-      </body>
+      <PHProvider>
+        <body>
+          <PostHogPageView />
+          <TRPCReactProvider>
+            <ColorModeProvider>{children}</ColorModeProvider>
+          </TRPCReactProvider>
+        </body>
+      </PHProvider>
     </html>
   );
 }

@@ -18,9 +18,9 @@
   }
 
   body {
-    @apply font-sans text-[16px] text-text;
+    @apply font-button text-[16px] text-text;
   }
   button {
-    @apply font-button text-text;
+    @apply font-button font-bold text-text;
   }
 }

@@ -14,12 +14,12 @@ export const Button = ({
   const disabledStyles = `bg-gray-light cursor-not-allowed`;
   const enabledStyles = `bg-theme hover:bg-[#5438c780]`;
 
-  // TODO: spinner component
+  // TODO: Spinner component
   if (loading)
     return (
       <button
         className={`${baseStyles} ${disabled ? disabledStyles : enabledStyles}`}
-      {...rest}
+        {...rest}
       >
         loading...
       </button>
@@ -28,7 +28,7 @@ export const Button = ({
     return (
       <button
         className={`${baseStyles} ${disabled ? disabledStyles : enabledStyles}`}
-      {...rest}
+        {...rest}
       >
         {children}
       </button>

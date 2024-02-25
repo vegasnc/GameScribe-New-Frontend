@@ -15,9 +15,7 @@ type FormMap = Record<string, JSX.Element>;
 
 export const AuthScreen = () => {
   const router = useRouter();
-  const { nickname, email, password, login, saveUser } = useUserStore(
-    (state) => state,
-  );
+  const { login, saveUser } = useUserStore((state) => state);
 
   // state for account details -> nickname, email, password
   const [accountDetails, setAccountDetails] = useState<iAccountDetails>(

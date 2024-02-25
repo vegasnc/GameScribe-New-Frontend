@@ -1,9 +1,5 @@
 "use client";
-import { reverse } from "dns";
 import { AnimatePresence, motion } from "framer-motion";
-
-const SECOND = 1000;
-const TEN_SECONDS = SECOND * 10;
 
 export const FloatingImage = () => {
   return (

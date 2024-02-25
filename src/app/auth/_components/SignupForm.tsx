@@ -61,6 +61,7 @@ export const SignupForm = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       // sets the account details state in context
       handleRegister(data);
+      router.replace("/dashboard?page=welcome");
     } catch (err) {
       // example:
       // logs out any errors relating to form
@@ -155,8 +156,9 @@ export const SignupForm = () => {
                     // validation for password requirements
                     const containsUppercase = /[A-Z]/.test(value);
                     const containsLowercase = /[a-z]/.test(value);
-                    const containsSpecialChar = /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/.test(value);
-                      const containsNumber = /\d/.test(value);
+                    const containsSpecialChar =
+                      /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/.test(value);
+                    const containsNumber = /\d/.test(value);
 
                     if (
                       !(
