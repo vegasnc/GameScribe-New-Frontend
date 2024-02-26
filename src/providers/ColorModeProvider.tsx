@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDarkMode } from "~/hooks/useDarkMode";
 
 interface ColorModeProviderProps {
@@ -7,11 +7,12 @@ interface ColorModeProviderProps {
 }
 
 export const ColorModeProvider = ({ children }: ColorModeProviderProps) => {
-  const toggleMode = useDarkMode();
+  const { colorMode } = useDarkMode();
+  const [mounted, setMounted] = useState<boolean>(false);
   // toggle the mode to local storage value when component mounts
   useEffect(() => {
-    toggleMode();
-  }, [toggleMode]);
-
-  return children;
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
+  return <div className="ease-in duration-300" data-theme={colorMode}>{children}</div>;
 };

@@ -1,7 +1,6 @@
 "use client";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Button } from "~/components/Buttons/Button";
-import { ModeToggle } from "~/components/DarkMode/ModeToggle";
 import { Shortcut } from "~/components/Shortcuts/Shortcut";
 import AbilityBar from "~/components/Stats/AbilityBar";
 import { ABILITY_BAR_TEST } from "~/components/Stats/constants";
@@ -20,7 +19,6 @@ const TestPage = () => {
       <Button>Rag 123</Button>
       <Shortcut keys={["⌘A", "⌘↩"]} />
       <AbilityBar abilities={ABILITY_BAR_TEST} />
-      <ModeToggle />
     </div>
   );
 };

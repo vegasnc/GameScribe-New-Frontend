@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 // types of theme modes: dark or light
 type mode = "light" | "dark";
 
@@ -23,10 +25,11 @@ const setThemeToStorage = (theme: mode): void => {
 };
 
 // set theme to document root[data-theme]
-const setThemeToDocument = (theme: mode): void => {
+const setThemeToDocument = (theme: mode): string => {
   withClient(() =>
     document.documentElement.setAttribute("data-theme", theme as string),
   )();
+  return theme;
 };
 
 // toggle theme between light and dark
@@ -42,14 +45,30 @@ const toggleTheme = () => {
 };
 
 // hook for using dark mode
-export const useDarkMode = (): (() => void) => {
+
+type useDarkModeReturn = {
+  colorMode: string | null;
+  toggleColorMode: () => void;
+};
+
+export const useDarkMode = (): useDarkModeReturn => {
+  let theme = getThemeFromStorage();
   // get theme
-  const theme = getThemeFromStorage();
   // set theme if present
   if (theme !== null) {
-    setThemeToDocument(theme as mode);
+    theme = setThemeToDocument(theme as mode);
+  }
+
+  const [colorMode, setColorMode] = useState<string | null>(theme);
+
+  const toggleColorMode = () => {
+    toggleTheme();
+    setColorMode(getThemeFromStorage());
   }
 
   // return toggle function
-  return toggleTheme;
+  return {
+    colorMode,
+    toggleColorMode,
+  };
 };

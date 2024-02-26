@@ -11,10 +11,10 @@ const Avatar = ({ size = "md", src = SkullVector }: AvatarProps) => {
   const hasSrc = typeof src === "string";
 
   const baseStyles =
-    "rounded-full shrink-0 bg-theme-light text-theme-light flex items-center justify-center";
-  const styleWithoutSrc = "border border-2 border-theme";
+    "rounded-full  bg-theme-light text-theme-light flex items-center justify-center";
+  const styleWithoutSrc = "";
   const sizes = {
-    xs: "w-[50px] h-[50px]",
+    xs: "w-[30px] h-[30px]",
     sm: "w-[80px] h-[80px]",
     md: "w-[120px] h-[120px]",
     lg: "w-[160px] h-[160px]",

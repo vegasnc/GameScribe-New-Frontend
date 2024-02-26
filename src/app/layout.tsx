@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import { Inter, Lato, Barlow_Condensed } from "next/font/google";
+import { Inter, Lato, Barlow_Condensed, Lora } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ColorModeProvider } from "~/providers/ColorModeProvider";
@@ -11,6 +11,13 @@ import PostHogPageView from "./PostHogPageView";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const goudy = Lora({
+  weight: "700",
+  subsets: ["latin"],
+  variable: "--font-fancy",
   display: "swap",
 });
 
@@ -42,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}
+      className={`${inter.className} ${lato.variable} ${barlow_condensed.variable} ${goudy.variable}`}
     >
       <PHProvider>
         <body>
