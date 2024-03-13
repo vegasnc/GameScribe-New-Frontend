@@ -1,18 +1,21 @@
+import type { ReactNode } from "react";
 import { SkullVector } from "../Background/FloatingImage";
 
 type SIZES = "xs" | "sm" | "md" | "lg";
 
 interface AvatarProps {
   size?: SIZES;
-  src?: string | (() => JSX.Element);
+  src?: string | (() => JSX.Element | null | ReactNode);
 }
 
-const Avatar = ({ size = "md", src = SkullVector }: AvatarProps) => {
-  const hasSrc = typeof src === "string";
-
+const Avatar = ({
+  size = "md",
+  src: SrcComponent = SkullVector,
+}: AvatarProps) => {
+  const isSrcComponent = typeof SrcComponent === "function";
   const baseStyles =
-    "rounded-full  bg-theme-light text-theme-light flex items-center justify-center";
-  const styleWithoutSrc = "";
+    "rounded-full  bg-theme-light text-theme flex items-center justify-center border border-1 border-theme-mid";
+
   const sizes = {
     xs: "w-[30px] h-[30px]",
     sm: "w-[80px] h-[80px]",
@@ -20,21 +23,16 @@ const Avatar = ({ size = "md", src = SkullVector }: AvatarProps) => {
     lg: "w-[160px] h-[160px]",
   };
 
-  const styleWithSrc = hasSrc
-    ? {
-        backgroundImage: src,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }
-    : {};
+  const styleWithSrc = {
+    backgroundImage: `url(${!isSrcComponent && SrcComponent})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
 
   return (
     <>
-      <div
-        className={`${baseStyles} ${sizes[size]} ${hasSrc ? "" : styleWithoutSrc}`}
-        style={styleWithSrc}
-      >
-        {!hasSrc && <SkullVector />}
+      <div className={`${baseStyles} ${sizes[size]}`} style={styleWithSrc}>
+        {isSrcComponent && <SrcComponent />}
       </div>
     </>
   );

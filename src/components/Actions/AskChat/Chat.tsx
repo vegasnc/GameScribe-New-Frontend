@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AskChatContext } from "./context";
 import type { iAskChatContext } from "./types";
-import { ChevronLeft, IconX } from "~/components/Icons";
+import { AiStars, ChevronLeft, IconX } from "~/components/Icons";
+import { useChatActions, useChatLoading, useChatMessages } from "~/store/store";
+import { CHAT_LOADERS, DEFAULT_CHAT } from "./constants";
+import type { iMessage, Role } from "~/types/chat.types";
+import { Avatar } from "~/components/Avatar";
+import GSAvatar from "~/components/Avatar/Avatar";
 
 // vars for controlling duration of animation
 const HEIGHT = 508;
@@ -12,8 +17,16 @@ const OPAC_DUR = 0.25;
 const OPAC_DELAY = 0.15;
 
 export const Chat = () => {
-  const { isChatOpen, isHistoryOpen, setIsHistoryOpen, setIsChatOpen } =
-    useContext(AskChatContext)! as iAskChatContext; // eslint-disable-line
+  const messages = useChatMessages();
+  const { setChat } = useChatActions();
+
+  const {
+    isChatOpen,
+    isHistoryOpen,
+    setIsHistoryOpen,
+    setIsChatOpen,
+    setActiveId,
+  } = useContext(AskChatContext)! as iAskChatContext; // eslint-disable-line
 
   // async wrapper for controlling which view closes first
   const asyncClose = async (cb: Dispatch<SetStateAction<boolean>>) => {
@@ -25,6 +38,8 @@ export const Chat = () => {
   const handleHideChat = async () => {
     if (isHistoryOpen) await asyncClose(setIsHistoryOpen);
     await asyncClose(setIsChatOpen);
+    setChat(DEFAULT_CHAT);
+    setActiveId("");
   };
 
   return (
@@ -76,12 +91,44 @@ export const Chat = () => {
                 <IconX />
               </div>
             </div>
-            <div className="chathistory">
-              <p>TODO: chat here...</p>
+            <div className="flex flex-col gap-5">
+              {messages.map((msg) => (
+                <Message key={msg.id} msg={msg} />
+              ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
+  );
+};
+
+interface MessageProps {
+  msg: iMessage;
+}
+
+type RoleMap = Record<Role, { avatar: React.ReactNode; name: string }>;
+
+export const Message = ({ msg }: MessageProps) => {
+  // TEMP LOADING VAR 
+  const [loading, setLoading] = useState(true);
+  const role: RoleMap = {
+    user: {
+      avatar: <Avatar size="xs" />,
+      name: "You",
+    },
+    assistant: {
+      avatar: <GSAvatar src={AiStars} size="xs" />,
+      name: "GameScribe AI",
+    },
+  };
+  return (
+    <div className="align-start flex gap-2">
+      <div className="text-theme">{role[msg.role].avatar}</div>
+      <div className="flex flex-col gap-[4px]">
+        <p className="font-bold">{role[msg.role].name}</p>
+        {loading ? <p className="text-text-40">{CHAT_LOADERS[0]}</p>: <p className="">{msg.content}</p> }
+      </div>
+    </div>
   );
 };

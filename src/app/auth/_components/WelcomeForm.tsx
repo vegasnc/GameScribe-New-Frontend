@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { SkullVector } from "~/components/Background/FloatingImage";
 import {
   InformationIcon,
@@ -11,6 +11,10 @@ import {
   DiscordIcon,
 } from "~/components/Icons";
 import { Options } from "./Options";
+import { type LiteralUnion, signIn, signOut, getSession, useSession }  from "next-auth/react";
+import type { OAuthProviderType } from "next-auth/providers/oauth-types";
+
+const redirectURL = "/dashboard";
 
 export const WelcomeForm = () => {
   const router = useRouter();
@@ -18,6 +22,13 @@ export const WelcomeForm = () => {
   const handleGoToSignUp = () => {
     router.push("?form=signup");
   }
+
+  const handleOAuth = async (provider: LiteralUnion<OAuthProviderType>) => {
+    await signIn(provider, { redirect: true, callbackUrl: "/dashboard"})
+  }
+
+  const { data } = useSession();
+  
 
   return (
     <div className="flex h-[650px] 2xl:h-[700px] w-[380px] flex-col justify-between ">
@@ -52,19 +63,19 @@ export const WelcomeForm = () => {
         <button className="tranisition-ease flex h-[42px] w-full items-center justify-center gap-[4px] rounded-[8px] bg-theme font-bold text-bg duration-[.2s] hover:bg-[#5438c780]" onClick={handleGoToSignUp}>
           Sign up <ChevronRight />{" "}
         </button>
-        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#fff] font-bold text-text">
+        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#fff] font-bold text-text" onClick={() => handleOAuth("google")}>
           <div className="flex w-full items-center justify-center gap-[10px]">
             <GoogleIcon />
             Continue with Google
           </div>
         </button>
-        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#070C15] font-bold text-bg">
+        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#070C15] font-bold text-bg" onClick={() => handleOAuth("apple")}>
           <div className="flex w-full items-center justify-center gap-[10px]">
             <AppleIcon />
             Continue with Apple
           </div>
         </button>
-        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#5865F2] font-bold text-bg">
+        <button className="flex h-[42px] w-full items-center justify-center gap-[10px] rounded-[8px] bg-[#5865F2] font-bold text-bg" onClick={() => handleOAuth("discord")}>
           <div className="flex w-full items-center justify-center gap-[10px]">
             <DiscordIcon />
             Continue with Discord

@@ -2,13 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useDarkMode } from "~/hooks/useDarkMode";
-import Avatar from "../Avatar/Avatar";
+import { Avatar } from "../Avatar";
 import { MoonIcon } from "../Icons";
 import { ChevronDown } from "../Icons";
 import { SunIcon } from "../Icons";
 import { AnimatePresence } from "framer-motion";
+import { useSession } from "next-auth/react";
+import { SkullVector } from "../Background/FloatingImage";
 
 export const Nav = () => {
+  const { data: userData } = useSession();
+  const userimg = userData?.user?.image ? userData.user?.image : SkullVector; 
   return (
     <>
       <div className=" mb-5 flex w-full justify-between">

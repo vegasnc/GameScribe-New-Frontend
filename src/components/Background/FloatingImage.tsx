@@ -5,7 +5,7 @@ export const FloatingImage = () => {
   return (
     <AnimatePresence mode="wait" >
       <motion.img
-        src="/bg.png"
+        src="/Background.png"
         alt="background"
         className="absolute left-0 right-0 top-0 w-full"
         initial={{ y: "0%" }}

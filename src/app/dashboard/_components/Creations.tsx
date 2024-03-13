@@ -8,20 +8,18 @@ interface CreationsProps {
 }
 
 export const Creations = ({ creations }: CreationsProps) => {
-  return (
+  return creations.length > 0 ? (
     <Container>
       <Inner>
         <Title>My Creations:</Title>
         <Content>
-          {creations.length > 0 ? (
-            creations.map((creation) => (
-              <Creation creation={creation} key={creation.id} />
-            ))
-          ) : (
-            <p>{"You don't have any creations yet..."}</p>
-          )}
+          {creations.map((creation) => (
+            <Creation creation={creation} key={creation.id} />
+          ))}
         </Content>
       </Inner>
-    </Container>
+    </Container>  
+  ) : (
+    <></>
   );
 };

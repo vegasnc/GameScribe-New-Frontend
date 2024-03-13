@@ -10,8 +10,3 @@ export interface iCreation {
 export interface ContainerProps {
   children: React.ReactNode;
 }
-
-export interface iAction {
-  title: string;
-  icon: JSX.Element;
-}

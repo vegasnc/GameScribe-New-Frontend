@@ -6,6 +6,8 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { ColorModeProvider } from "~/providers/ColorModeProvider";
 import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
+import SessionProvider from "~/providers/SessionProvider";
+import { getServerAuthSession } from "./api/auth/[...nextauth]/route";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -41,11 +43,12 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerAuthSession();
   return (
     <html
       lang="en"
@@ -54,9 +57,11 @@ export default function RootLayout({
       <PHProvider>
         <body>
           <PostHogPageView />
-          <TRPCReactProvider>
-            <ColorModeProvider>{children}</ColorModeProvider>
-          </TRPCReactProvider>
+          <SessionProvider session={session}>
+            <TRPCReactProvider>
+              <ColorModeProvider>{children}</ColorModeProvider>
+            </TRPCReactProvider>
+          </SessionProvider>
         </body>
       </PHProvider>
     </html>

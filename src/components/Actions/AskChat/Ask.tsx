@@ -12,6 +12,7 @@ export const Ask = () => {
   const [inputIsFocused, setInputIsFocused] = useState<boolean>(false);
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
+  const [activeId, setActiveId] = useState<string>("");
   const toggleFocus = () => {
     inputRef.current?.focus();
     setIsChatOpen(true);
@@ -39,20 +40,22 @@ export const Ask = () => {
   return (
     <AskChatContext.Provider
       value={{
+        activeId,
         isHistoryOpen,
         isChatOpen,
         setIsHistoryOpen,
         setIsChatOpen,
+        setActiveId
       }}
     >
       <motion.div
-        className={`fixed bottom-5 left-0 right-0 mx-auto flex h-auto w-max justify-between rounded-[12px] bg-bg backdrop-blur-[40px]`}
+        className={`fixed bottom-5 left-0 right-0 mx-auto flex h-auto w-max justify-between rounded-[24px] bg-bg backdrop-blur-[40px]`}
         style={{
-          boxShadow: "0px 40px 200px 0px rgba(128, 128, 128, 0.60)",
+          boxShadow: "0px 40px 200px 0px #80808060",
         }}
       >
         <History />
-        <div className="flex w-[383px] flex-col items-center justify-between p-[24px]">
+        <div className="flex w-[404px] flex-col items-center justify-between p-[24px]">
           <Chat />
           <div className={"flex w-full items-center justify-between"}>
             <div className="flex items-center">
