@@ -6,7 +6,7 @@ import { ChevronRight } from "~/components/Icons";
 import type { iChat } from "~/types/chat.types";
 import { useChatActions, useChatState, useHistory } from "~/store/store";
 
-const WIDTH = 300;
+const WIDTH = 400;
 const HEIGHT = "w-[580px]";
 
 const WIDTH_DURATION = 0.4;

@@ -2,11 +2,11 @@ import "~/styles/globals.css";
 
 import { Inter, Lato, Barlow_Condensed, Lora } from "next/font/google";
 
-import { TRPCReactProvider } from "~/trpc/react";
-import { ColorModeProvider } from "~/providers/ColorModeProvider";
+import { TRPCReactProvider } from "~/trpc/react"; import { ColorModeProvider } from "~/providers/ColorModeProvider";
 import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
 import SessionProvider from "~/providers/SessionProvider";
+import { Toaster } from "react-hot-toast";
 import { getServerAuthSession } from "./api/auth/[...nextauth]/route";
 
 // display: swap allows font to default to inter
@@ -57,6 +57,7 @@ export default async function RootLayout({
       <PHProvider>
         <body>
           <PostHogPageView />
+          <Toaster />
           <SessionProvider session={session}>
             <TRPCReactProvider>
               <ColorModeProvider>{children}</ColorModeProvider>

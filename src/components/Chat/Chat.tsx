@@ -1,8 +1,10 @@
 import { useState } from "react";
+import remarkGfm from "remark-gfm";
 import { AnimatePresence, motion } from "framer-motion";
-import { AiStars, ChevronLeft, IconX } from "~/components/Icons";
-import { useChatActions, useChatMessages, useChatState } from "~/store/store";
-import { CHAT_LOADERS, DEFAULT_CHAT } from "./constants";
+import Markdown from "react-markdown";
+import { AiStars } from "~/components/Icons";
+import { useChatMessages, useChatState } from "~/store/store";
+import { CHAT_LOADERS } from "./constants";
 import type { iMessage, Role } from "~/types/chat.types";
 import { Avatar } from "~/components/Avatar";
 import GSAvatar from "~/components/Avatar/Avatar";
@@ -15,40 +17,22 @@ const OPAC_DELAY = 0.15;
 
 const Chat = () => {
   const messages = useChatMessages();
-  const { setChat } = useChatActions();
 
   const {
     isChatOpen,
-    isHistoryOpen,
-    setIsHistoryOpen,
-    setIsChatOpen,
-    setActiveId,
   } = useChatState();
-
-  // async wrapper for controlling which view closes first
-  const asyncClose = async (cb: (data: boolean) => void) => {
-    cb(false);
-    await new Promise((resolve) => setTimeout(resolve, 300));
-  };
-
-  // handles closing chat or chat and history
-  const handleHideChat = async () => {
-    if (isHistoryOpen) await asyncClose(setIsHistoryOpen);
-    await asyncClose(setIsChatOpen);
-    setChat(DEFAULT_CHAT);
-    setActiveId("");
-  };
 
   return (
     <>
       <AnimatePresence initial={false} mode="wait">
         {isChatOpen && (
           <motion.div
-            className="relative w-full"
-            initial={{ height: 0, opacity: 0 }}
+            className="container relative w-full overflow-y-auto"
+            initial={{ height: 0, opacity: 0, paddingBlock: 0 }}
             animate={{
               height: `${HEIGHT}px`,
               opacity: 1,
+              paddingBlock: "16px",
               transition: {
                 height: { duration: HEIGHT_DUR },
                 opacity: { duration: OPAC_DUR, delay: OPAC_DELAY },
@@ -57,6 +41,7 @@ const Chat = () => {
             exit={{
               height: 0,
               opacity: 0,
+              padding: 0,
               transition: {
                 height: {
                   duration: HEIGHT_DUR,
@@ -67,27 +52,6 @@ const Chat = () => {
               },
             }}
           >
-            <div className="mb-3 flex w-full items-center justify-between text-theme">
-              <div
-                className="flex cursor-pointer items-center gap-1 rounded-[4px] bg-theme-ex-light px-[4px] py-[2px]"
-                onClick={() => setIsHistoryOpen(true)}
-              >
-                {!isHistoryOpen && (
-                  <>
-                    <div className="flex h-[15px] w-[15px] cursor-pointer items-center">
-                      <ChevronLeft />
-                    </div>
-                    <h1>history</h1>
-                  </>
-                )}
-              </div>
-              <div
-                className="h-max w-max cursor-pointer"
-                onClick={() => handleHideChat()}
-              >
-                <IconX />
-              </div>
-            </div>
             <div className="flex flex-col gap-5">
               {messages.map((msg) => (
                 <Message key={msg.id} msg={msg} />
@@ -104,7 +68,7 @@ interface MessageProps {
   msg: iMessage;
 }
 
-type RoleMap = Record<Role, { avatar: React.ReactNode; name: string }>;
+type RoleMap = Record<Role, { avatar: React.ReactNode; name: string, format: React.ReactNode }>;
 
 export const Message = ({ msg }: MessageProps) => {
   // TEMP LOADING VAR
@@ -113,21 +77,27 @@ export const Message = ({ msg }: MessageProps) => {
     user: {
       avatar: <Avatar size="xs" />,
       name: "You",
+      format: msg.content,
     },
     assistant: {
       avatar: <GSAvatar src={AiStars} size="xs" />,
       name: "GameScribe AI",
+      format: <Markdown remarkPlugins={[remarkGfm]}>{msg.content}</Markdown>
     },
   };
   return (
-    <div className="align-start flex gap-2">
-      <div className="text-theme">{role[msg.role].avatar}</div>
-      <div className="flex flex-col gap-[4px]">
+    <div>
+      <div className="align-start flex gap-2">
+        <div className="text-theme">{role[msg.role].avatar}</div>
         <p className="font-bold">{role[msg.role].name}</p>
+      </div>
+      <div className="flex flex-col gap-[4px]">
         {loading ? (
           <p className="text-text-40">{CHAT_LOADERS[0]}</p>
         ) : (
-          <p className="">{msg.content}</p>
+          <div className="prose">
+            {role[msg.role].format}
+          </div>
         )}
       </div>
     </div>

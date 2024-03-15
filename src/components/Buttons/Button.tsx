@@ -1,16 +1,20 @@
+import { twMerge } from "tailwind-merge";
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   loading?: boolean;
+  styles?: string;
   children: React.ReactNode;
 }
 
 export const Button = ({
   disabled = false,
   loading = false,
+  styles,
   children,
   ...rest
 }: ButtonProps) => {
-  const baseStyles = `tranisition-ease flex h-[42px] w-full items-center justify-center gap-[4px] rounded-[8px] bg-theme font-bold text-bg duration-[.2s]`;
+  const baseStyles = `tranisition-ease flex h-[42px] w-max items-center justify-center gap-[4px] rounded-[8px] bg-theme font-bold text-bg duration-[.2s] px-4 py-2 text-sm`;
   const disabledStyles = `bg-gray-light cursor-not-allowed`;
   const enabledStyles = `bg-theme hover:bg-[#5438c780]`;
 
@@ -18,7 +22,11 @@ export const Button = ({
   if (loading)
     return (
       <button
-        className={`${baseStyles} ${disabled ? disabledStyles : enabledStyles}`}
+        className={twMerge(
+          baseStyles,
+          styles,
+          disabled ? disabledStyles : enabledStyles,
+        )}
         {...rest}
       >
         loading...

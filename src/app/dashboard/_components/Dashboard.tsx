@@ -110,15 +110,15 @@ export const TEST_ACTIONS: iAction[] = [
     prompt: "Generate a Quest",
   },
   {
-    title: "Rule",
-    category: "Rule",
+    title: "Surprise Me",
+    category: "Surprise",
     icon: <SkullVector />,
-    prompt: "Generate a Rule",
+    prompt: "Generate a Surprise",
   },
   {
-    title: "Item",
-    category: "Item",
+    title: "Adventure",
+    category: "Adventure",
     icon: <SkullVector />,
-    prompt: "Generate an Item",
+    prompt: "Generate an Adventure",
   },
 ];

@@ -5,14 +5,15 @@ import { AiStars } from "~/components/Icons";
 import { useToggleFocus } from "./hooks/useToggleFocus";
 import { useChatActions, useChatState } from "~/store/store";
 import { Button } from "../Buttons/Button";
+import { twJoin } from "tailwind-merge";
 
 const Input = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const [newMessage, setNewMessage] = useState<string>("");
   const { pushMessage } = useChatActions();
   const { isChatOpen, setIsChatOpen } = useChatState();
 
-  const { isFocused } = useToggleFocus<HTMLInputElement>({ ref: inputRef });
+  const { isFocused } = useToggleFocus<HTMLTextAreaElement>({ ref: inputRef });
 
   const toggleFocus = () => {
     inputRef.current?.focus();
@@ -35,26 +36,28 @@ const Input = () => {
   };
 
   return (
-    <div className={"flex w-full items-center justify-between"}>
-      <div className="flex items-center">
+    <div className={"flex items-center w-full justify-between"}>
+      <div className={twJoin("flex items-center w-full rounded-[8px]", isChatOpen ? "bg-gray-ex-light p-[10px]": "bg-transparent")}>
         <div className={`${styles}`}>
           <AiStars />
         </div>
-        <input
+        <textarea
           ref={inputRef}
-          className="border-none bg-transparent focus:border-transparent focus:ring-0"
-          type="text"
+          className="border-none bg-transparent focus:border-transparent focus:ring-0 w-full resize-none"
           placeholder="Ask GameScribe..."
           onFocus={toggleFocus}
-          value={newMessage}
+          value={isChatOpen ? newMessage : ""}
           onChange={(e) => setNewMessage(e.currentTarget.value)}
+          rows={1}
+          tabIndex={0}
         />
+        {isChatOpen ? (
+          <Button styles={"w-max"} onClick={handleSendMessage}>Submit</Button>
+        ) : (
+          <Shortcut keys={["⌘A", "⌘⏎"]} />
+        )}
       </div>
-      {isChatOpen ? (
-        <Button onClick={handleSendMessage}>Submit</Button>
-      ) : (
-        <Shortcut keys={["⌘A", "⌘⏎"]} />
-      )}
+
     </div>
   );
 };

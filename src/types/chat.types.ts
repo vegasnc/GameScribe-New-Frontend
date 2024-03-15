@@ -24,3 +24,10 @@ export interface iChatContext {
   setIsChatOpen: Dispatch<SetStateAction<boolean>>;
   setActiveId: Dispatch<SetStateAction<string>>;
 }
+
+export type iGenerateMessage = Pick<iMessage, "role" | "content">
+
+export interface iGeneratedResult {
+  dalle_prompt: string;
+  monster_content: string;
+}

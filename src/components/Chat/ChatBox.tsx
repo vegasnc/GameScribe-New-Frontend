@@ -4,7 +4,7 @@ import type {
   ChatBoxInnerComponent,
   ChatBoxContainerComponent,
 } from "./types";
-import { Chat, History, Input } from ".";
+import { Chat, History, Input, ChatBar } from ".";
 import { useChatState } from "~/store/store";
 
 const ChatBox: ChatBoxComponent = () => {
@@ -12,6 +12,7 @@ const ChatBox: ChatBoxComponent = () => {
     <ChatBox.Container>
       <History />
       <ChatBox.Inner>
+        <ChatBar />
         <Chat />
         <Input />
       </ChatBox.Inner>
@@ -20,7 +21,7 @@ const ChatBox: ChatBoxComponent = () => {
 };
 
 const Container: ChatBoxContainerComponent = ({ children }) => {
-  const { isChatOpen } = useChatState();
+  const { isChatOpen, isHistoryOpen } = useChatState();
   return (
     <AnimatePresence initial={false} mode="wait">
       <motion.div
@@ -28,7 +29,7 @@ const Container: ChatBoxContainerComponent = ({ children }) => {
         initial={{
           width: "404px",
         }}
-        animate={isChatOpen ? { width: "600px" } : { width: "404px" }}
+        animate={isChatOpen ? { width: isHistoryOpen ? "800px" : "600px" } : { width: "404px" }}
         exit={{ width: "404px" }}
         style={{
           boxShadow: "0px 40px 200px 0px #80808060",
@@ -42,7 +43,7 @@ const Container: ChatBoxContainerComponent = ({ children }) => {
 
 const Inner: ChatBoxInnerComponent = ({ children }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-between p-[24px]">
+    <div className="relative flex w-full flex-col items-center justify-between p-[24px] ">
       {children}
     </div>
   );

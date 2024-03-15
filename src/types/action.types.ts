@@ -3,8 +3,8 @@ export type ActionCategory =
   | "Encounters"
   | "Monster"
   | "Quest"
-  | "Rule"
-  | "Item";
+  | "Surprise"
+  | "Adventure";
 
 export interface iAction {
   title: string;
