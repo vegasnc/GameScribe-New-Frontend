@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 
 export type Role = "user" | "assistant";
+export type ChatOption = "Monster" | "Spell" | "Background" | "Magic Item" | "NPC";
 
 export interface iMessage {
   id: string;
@@ -30,4 +31,8 @@ export type iGenerateMessage = Pick<iMessage, "role" | "content">
 export interface iGeneratedResult {
   dalle_prompt: string;
   monster_content: string;
+}
+
+export interface iGeneratedResultSimple {
+  result: string;
 }

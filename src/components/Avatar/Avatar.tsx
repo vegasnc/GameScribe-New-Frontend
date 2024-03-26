@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { SkullVector } from "../Background/FloatingImage";
+import { GSIcon } from "../Icons";
 
 type SIZES = "xs" | "sm" | "md" | "lg";
 
@@ -10,7 +10,7 @@ interface AvatarProps {
 
 const Avatar = ({
   size = "md",
-  src: SrcComponent = SkullVector,
+  src: SrcComponent = GSIcon,
 }: AvatarProps) => {
   const isSrcComponent = typeof SrcComponent === "function";
   const baseStyles =

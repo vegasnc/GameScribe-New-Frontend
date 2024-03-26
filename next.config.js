@@ -11,8 +11,8 @@ const config = {
     return [
       {
         source: "/",
-        destination: "/auth",
-        permanent: true,
+        destination: "/test",
+        permanent: false,
       },
     ];
   },

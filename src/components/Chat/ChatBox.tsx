@@ -5,7 +5,7 @@ import type {
   ChatBoxContainerComponent,
 } from "./types";
 import { Chat, History, Input, ChatBar } from ".";
-import { useChatState } from "~/store/store";
+import { useChatState } from "~/store/chat.slice";
 
 const ChatBox: ChatBoxComponent = () => {
   return (

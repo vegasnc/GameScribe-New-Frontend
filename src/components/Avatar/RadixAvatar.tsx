@@ -1,6 +1,6 @@
 import * as Avatar from "@radix-ui/react-avatar";
-import { SkullVector } from "../Background/FloatingImage";
 import { useSession } from "next-auth/react";
+import { GSIcon } from "../Icons";
 
 type SIZES = "xs" | "sm" | "md" | "lg";
 
@@ -12,7 +12,7 @@ interface AvatarProps {
 export default function RadixAvatar({ size = "md", src }:AvatarProps) {
   const { data: userData } = useSession();
   const baseStyles =
-    "rounded-full  bg-theme-light text-theme-light flex items-center justify-center";
+    "rounded-full bg-theme-light text-theme-light flex items-center justify-center";
   const sizes = {
     xs: "w-[30px] h-[30px]",
     sm: "w-[80px] h-[80px]",
@@ -22,14 +22,17 @@ export default function RadixAvatar({ size = "md", src }:AvatarProps) {
 
   return (
     <Avatar.Root className={`${baseStyles} ${sizes[size]}`}>
+      <Avatar.Fallback >
+        <Avatar.Image>
+          <GSIcon />
+        </Avatar.Image>
+      </Avatar.Fallback>
       <Avatar.Image
         className="rounded-full"
         src={!src && userData?.user?.image ? userData.user.image : src }
         alt={userData?.user?.name ?? ""}
       />
-      <Avatar.Fallback>
-        <SkullVector />
-      </Avatar.Fallback>
+
     </Avatar.Root>
   );
 }

@@ -33,6 +33,7 @@
     "@trpc/server": "^10.43.6",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.3",
+    "nanoid": "^5.0.6",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "posthog-js": "^1.108.3",

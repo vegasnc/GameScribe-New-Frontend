@@ -1,4 +1,4 @@
-import { useChatActions, useChatState } from "~/store/store";
+import { useChatActions, useChatState } from "~/store/chat.slice";
 import { ChevronLeft, IconX } from "../Icons";
 import { DEFAULT_CHAT } from "./constants";
 

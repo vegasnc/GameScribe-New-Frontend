@@ -1,4 +1,5 @@
-import type { iChat } from "~/types/chat.types";
+import type { ChatOption, iChat } from "~/types/chat.types";
+import { BackgroundIcon, MagicItemIcon, MonsterIcon, NPCIcon, SpellIcon } from "../Icons";
 
 export const CHAT_LOADERS: string[] = [
   "Rolling dice...",
@@ -8,6 +9,29 @@ export const CHAT_LOADERS: string[] = [
   "Weaving magic...",
   "Building quests...",
 ];
+
+export const CHAT_OPTIONS: {label: ChatOption, icon: React.FC}[] = [
+  {
+    label: "Monster",
+    icon: MonsterIcon,
+  },
+  {
+    label: "Spell",
+    icon: SpellIcon,
+  },
+  {
+    label: "Background",
+    icon: BackgroundIcon,
+  },
+  {
+    label: "Magic Item",
+    icon: MagicItemIcon,
+  },
+  {
+    label: "NPC",
+    icon: NPCIcon,
+  }
+]
 
 export const TEST_HISTORY: iChat[] = [
   {
@@ -48,4 +72,4 @@ export const DEFAULT_CHAT: iChat = {
   date: "",
   title: "",
   messages: [],
-};
+}
