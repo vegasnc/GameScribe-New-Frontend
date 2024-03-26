@@ -4,11 +4,8 @@ import { Suggestions } from "./Suggestions";
 import { Actions } from "./Actions";
 import { SkullVector } from "~/components/Background/FloatingImage";
 import type { iAction } from "~/types/action.types";
-import { useChat, useHistory } from "~/store/store";
 
 const Dashboard = () => {
-  const chat = useChat();
-  const history = useHistory();
   return (
     <div className="mb-20 flex h-full flex-col gap-5">
       {/* Render Creations */}
@@ -18,7 +15,7 @@ const Dashboard = () => {
       {/* Render Actions */}
       <Actions actions={TEST_ACTIONS} />
       {/* Render the Ask GameScribe Component */}
-      <ChatBox chat={chat} history={history} />
+      <ChatBox />
     </div>
   );
 };
@@ -33,7 +30,7 @@ const TEST_SUGGESTIONS = [
   "a rusty sword made of a strange metal",
 ];
 
-const TEST_CREATIONS = [
+/* const TEST_CREATIONS = [
   {
     id: 1,
     title: "Lyra Lightbringer",
@@ -83,6 +80,7 @@ const TEST_CREATIONS = [
     img: "/TESTPICS/PIC4.png",
   },
 ];
+*/
 
 export const TEST_ACTIONS: iAction[] = [
   {

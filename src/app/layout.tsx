@@ -7,7 +7,6 @@ import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
 import SessionProvider from "~/providers/SessionProvider";
 import { Toaster } from "react-hot-toast";
-import { getServerAuthSession } from "./api/auth/[...nextauth]/route";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -48,7 +47,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerAuthSession();
   return (
     <html
       lang="en"
@@ -58,7 +56,7 @@ export default async function RootLayout({
         <body>
           <PostHogPageView />
           <Toaster />
-          <SessionProvider session={session}>
+          <SessionProvider>
             <TRPCReactProvider>
               <ColorModeProvider>{children}</ColorModeProvider>
             </TRPCReactProvider>

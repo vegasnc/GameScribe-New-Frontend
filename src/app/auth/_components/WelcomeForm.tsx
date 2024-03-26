@@ -1,5 +1,5 @@
 "use client"
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { SkullVector } from "~/components/Background/FloatingImage";
 import {
   InformationIcon,
@@ -11,10 +11,9 @@ import {
   DiscordIcon,
 } from "~/components/Icons";
 import { Options } from "./Options";
-import { type LiteralUnion, signIn, signOut, getSession, useSession }  from "next-auth/react";
+import { type LiteralUnion, signIn }  from "next-auth/react";
 import type { OAuthProviderType } from "next-auth/providers/oauth-types";
 
-const redirectURL = "/dashboard";
 
 export const WelcomeForm = () => {
   const router = useRouter();
@@ -27,7 +26,6 @@ export const WelcomeForm = () => {
     await signIn(provider, { redirect: true, callbackUrl: "/dashboard"})
   }
 
-  const { data } = useSession();
   
 
   return (
