@@ -1,4 +1,3 @@
-import { getServerSession } from "next-auth";
 import NextAuth from "next-auth/next";
 import { authOptions } from "./options";
 
@@ -37,4 +36,4 @@ export { handler as GET, handler as POST };
  *
  * @see https://next-auth.js.org/configuration/nextjs
  */
-export const getServerAuthSession = () => getServerSession(authOptions);
+// export const getServerAuthSession = () => getServerSession(authOptions);
