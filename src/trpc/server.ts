@@ -1,4 +1,4 @@
-import "server-only";
+/*import "server-only";
 
 import {
   createTRPCProxyClient,
@@ -19,6 +19,7 @@ import { transformer } from "./shared";
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
  * handling a tRPC call from a React Server Component.
  */
+/*
 const createContext = cache(() => {
   const heads = new Headers(headers());
   heads.set("x-trpc-source", "rsc");
@@ -40,6 +41,7 @@ export const api = createTRPCProxyClient<AppRouter>({
      * Custom RSC link that lets us invoke procedures without using http requests. Since Server
      * Components always run on the server, we can just call the procedure as a function.
      */
+    /*
     () =>
       ({ op }) =>
         observable((observer) => {
@@ -63,3 +65,4 @@ export const api = createTRPCProxyClient<AppRouter>({
         }),
   ],
 });
+*/

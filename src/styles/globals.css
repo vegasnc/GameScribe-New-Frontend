@@ -3,10 +3,57 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-theme: 252deg 56% 50%;
+    --color-text: 219deg 50% 5%;
+    --color-bg: 30deg 100% 97%;
+    --color-gray: 219deg 50% 5%;
+
+    background: hsl(var(--color-bg));
+  }
+
+  :root[data-theme="dark"] {
+    --color-theme: 252deg 72% 63%;
+    --color-text: 30deg 100% 97%;
+    --color-bg: 219deg 50% 5%;
+    --color-gray: 30deg 100% 97%;
+  }
+
   body {
-    @apply font-sans text-[18px]
+    @apply font-button text-[16px] text-text;
   }
   button {
-    @apply font-button
+    @apply font-button font-bold text-text;
+  }
+
+  .container::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .container::-webkit-scrollbar-track {
+    margin-top: 20px;
+    background-color: hsl(var(--color-theme) / 0.2);
+    border-radius: 20px;
+  }
+  .container::-webkit-scrollbar-thumb {
+    background: hsl(var(--color-theme));
+    height: 6px;
+    max-width: 55px;
+    border-radius: 20px;
+  }
+  .container::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--color-theme));
+  }
+
+  .markdown h1,
+  .markdown h2,
+  .markdown h3,
+  .markdown h4,
+  .markdown h5,
+  .markdown h6,
+  .markdown strong,
+  .markdown th {
+    color: hsl(var(--color-text)); /* Set color to text-text */
   }
 }

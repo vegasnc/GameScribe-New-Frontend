@@ -6,7 +6,7 @@ interface ShortcutProps {
 }
 
 export const Shortcut: React.FC<ShortcutProps> = ({ keys, size = "md" }) => {
-  const baseStyle = `font-shortcut text-background-light text-[16px] bg-theme-100-light flex flex-row rounded-[8px] gap-[10px] line-height-[140%]`;
+  const baseStyle = `font-shortcut text-bg text-[16px] bg-theme flex flex-row rounded-[8px] gap-[10px] line-height-[140%]`;
   const sizeStyles = {
     sm: "py-1 px-2 text-sm",
     md: "py-[2px] px-[10px]",
@@ -24,7 +24,7 @@ export const Shortcut: React.FC<ShortcutProps> = ({ keys, size = "md" }) => {
         >
           <p>{key}</p>
           {keys.length > 1 && index !== keys.length - 1 && (
-            <div className="h-[16px] w-[2px] bg-background-60-light" />
+            <div className="h-[16px] w-[2px] bg-bg-60" />
           )}
         </div>
       ))}

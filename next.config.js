@@ -5,6 +5,20 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  // TODO: for now until landing page => change later
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/test",
+        permanent: false,
+      },
+    ];
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  }
+};
 
 export default config;

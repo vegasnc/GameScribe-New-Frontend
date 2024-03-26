@@ -1,8 +1,13 @@
 import "~/styles/globals.css";
-
-import { Inter, Lato, Barlow_Condensed } from "next/font/google";
-
-import { TRPCReactProvider } from "~/trpc/react";
+import { Inter, Lato, Barlow_Condensed, Lora } from "next/font/google";
+import { ColorModeProvider } from "~/providers/ColorModeProvider";
+import { PHProvider } from "~/providers/PostHogProvider";
+import PostHogPageView from "./PostHogPageView";
+import SessionProvider from "~/providers/SessionProvider";
+import {  } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+import { ReactQueryProvider } from "~/providers/ReactQueryProvider";
+import { Suspense } from "react";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -11,19 +16,26 @@ const inter = Inter({
   display: "swap",
 });
 
-const lato = Lato({
+const goudy = Lora({
   weight: "700",
   subsets: ["latin"],
+  variable: "--font-fancy",
+  display: "swap",
+});
+
+const lato = Lato({
+  weight: ["400", "700"],
+  subsets: ["latin"],
   variable: "--button-font",
-  display: "swap"
-})
+  display: "swap",
+});
 
 const barlow_condensed = Barlow_Condensed({
   weight: "400",
   subsets: ["latin"],
   variable: "--stat-font",
   display: "swap",
-})
+});
 
 export const metadata = {
   title: "Create T3 App",
@@ -31,16 +43,29 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
+    <html
+      lang="en"
+      className={`${inter.className} ${lato.variable} ${barlow_condensed.variable} ${goudy.variable}`}
+    >
+      <PHProvider>
+        <body>
+          <PostHogPageView />
+          <Toaster />
+          <SessionProvider>
+            <ReactQueryProvider>
+              <ColorModeProvider>
+                <Suspense>{children}</Suspense>
+              </ColorModeProvider>
+            </ReactQueryProvider>
+          </SessionProvider>
+        </body>
+      </PHProvider>
     </html>
   );
 }

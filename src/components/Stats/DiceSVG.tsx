@@ -1,5 +1,3 @@
-import { HTMLProps } from "react";
-
 export const DiceSVG:React.FC<React.SVGProps<SVGSVGElement>> = ({ ...rest }) => {
   return (
     <svg
