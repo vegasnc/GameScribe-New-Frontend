@@ -53,6 +53,8 @@ const Input = () => {
           role: "assistant",
         }
         pushMessage(newMsg);
+      } else {
+        throw new Error();
       }
     },
     onError: () => {

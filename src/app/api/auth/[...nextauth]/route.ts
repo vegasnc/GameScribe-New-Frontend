@@ -32,7 +32,7 @@ declare module "next-auth" {
  *
  *
  */
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   callbacks: {
     /*
     session: ({ session, user }) => ({
