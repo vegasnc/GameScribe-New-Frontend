@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { Container } from "~/components/Containers";
 import type { iAction } from "~/types/action.types";
-import { useChatActions, useChatState } from "~/store/store";
-import { randomUUID } from "crypto";
-import type { iGenerateMessage, iGeneratedResult, iMessage } from "~/types/chat.types";
+import { useChatActions, useChatState } from "~/store/chat.slice";
+import { nanoid } from "nanoid";
+import type { iGenerateMessage, iGeneratedResult, iGeneratedResultSimple, iMessage } from "~/types/chat.types";
 import { useMutation } from "@tanstack/react-query";
-import { generateMonster } from "~/api/generate/generate.api";
+import { generateContent } from "~/api/generate/generate.api";
 import toast from "react-hot-toast";
 
 interface ActionProps {
@@ -18,19 +18,26 @@ export const Action = ({ action }: ActionProps) => {
 
   const mutation = useMutation({
     mutationFn: async (data: iGenerateMessage) => {
-      return await generateMonster([data])
+      return await generateContent("Monster",[data])
     },
-    onSuccess: (data: iGeneratedResult) => {
-      const res = data.monster_content;
-      toast.success("Success!");
-      const newMsg: iMessage = {
-        id: String(randomUUID),
-        content: res,
-        timestamp: Date.now(),
-        role: "assistant"
+    onSuccess: (data: iGeneratedResult | iGeneratedResultSimple) => {
+      let res;
+      if ("result" in data) {
+        res = data.result;
+      } else if ("monster_content" in data) {
+        res = data.monster_content
       }
-      console.log(data);
-      pushMessage(newMsg);
+      if (res) {
+        toast.success("Success!");
+        const newMsg: iMessage = {
+          id: nanoid(),
+          content: res,
+          timestamp: Date.now(),
+          role: "assistant"
+        }
+        pushMessage(newMsg);
+      }
+      return
     },
     onError: () => {
       toast.error("Error creating monster");
@@ -41,13 +48,13 @@ export const Action = ({ action }: ActionProps) => {
     setIsChatOpen(true);
     // setChat to action.category
     const newMessage: iMessage = {
-      id: String(randomUUID),
+      id: nanoid(),
       role: "user",
       content: action.prompt,
       timestamp: new Date(Date.now()).getHours()
     }
 
-    setChat({id: String(randomUUID), title: action.prompt, date: new Date(Date.now()).toTimeString(), messages: [newMessage]})
+    setChat({id: nanoid(), title: action.prompt, date: new Date(Date.now()).toTimeString(), messages: [newMessage]})
     mutation.mutate({role: newMessage.role, content: newMessage.content});
     // handle mutation
   }
