@@ -1,17 +1,17 @@
-import type { ReactNode } from "react";
 import { GSIcon } from "../Icons";
 
 type SIZES = "xs" | "sm" | "md" | "lg";
 
 interface AvatarProps {
   size?: SIZES;
-  src?: string | (() => JSX.Element | null | ReactNode);
+  src?: string | React.FC;
 }
 
 const Avatar = ({
   size = "md",
-  src: SrcComponent = GSIcon,
+  src = GSIcon,
 }: AvatarProps) => {
+  const SrcComponent = src;
   const isSrcComponent = typeof SrcComponent === "function";
   const baseStyles =
     "rounded-full  bg-theme-light text-theme flex items-center justify-center border border-1 border-theme-mid";

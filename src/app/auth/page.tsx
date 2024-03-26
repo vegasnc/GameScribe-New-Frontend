@@ -18,11 +18,11 @@ const AuthView = () => {
               </h1>
             </div>
             <div className="flex w-full flex-row justify-center sm:py-[36px] 2xl:px-[74px] 2xl:py-[58px]">
-              <Suspense>
-                <div className="z-30 flex w-[500px] shrink-0 flex-col items-center justify-between overflow-x-hidden rounded-[52px] bg-bg-80 p-[52px] shadow-lg backdrop-blur-[40px]">
+              <div className="z-30 flex w-[500px] shrink-0 flex-col items-center justify-between overflow-x-hidden rounded-[52px] bg-bg-80 p-[52px] shadow-lg backdrop-blur-[40px]">
+                <Suspense>
                   <AuthScreen />
-                </div>
-              </Suspense>
+                </Suspense>
+              </div>
             </div>
           </div>
         </div>

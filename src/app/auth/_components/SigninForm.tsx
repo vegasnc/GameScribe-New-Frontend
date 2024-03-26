@@ -8,7 +8,7 @@ import type { iAuthContext } from "../types";
 import { SkullVector } from "~/components/Background/FloatingImage";
 import { Button } from "~/components/Buttons/Button";
 import { FormGroup, Input, Label } from "~/components/Forms";
-import { ChevronLeft, ChevronRight } from "~/components/Icons";
+import { ChevronRight } from "~/components/Icons";
 import { AuthContext } from "../context";
 import { GoBack } from "./GoBack";
 

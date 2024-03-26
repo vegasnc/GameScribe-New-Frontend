@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { WelcomeForm } from "./WelcomeForm";
 import { AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -54,7 +54,9 @@ export const AuthScreen = () => {
     >
       <AnimatePresence mode="wait">
         <AnimateLeft key={formId}>
-          {formId ? formMap[formId] : <WelcomeForm />}
+          <Suspense>
+            {formId ? formMap[formId] : <WelcomeForm />}
+          </Suspense>
         </AnimateLeft>
       </AnimatePresence>
     </AuthContext.Provider>

@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight } from "~/components/Icons";
 import type { iChat } from "~/types/chat.types";
 import { useChatActions, useChatState, useHistory } from "~/store/chat.slice";
 
@@ -13,7 +12,7 @@ const OPAC_DELAY = 0.15;
 const History = () => {
   const history = useHistory();
   //eslint-disable-next-line
-  const { isHistoryOpen, setIsHistoryOpen } = useChatState();
+  const { isHistoryOpen } = useChatState();
   const { clearChat } = useChatActions();
 
   return (

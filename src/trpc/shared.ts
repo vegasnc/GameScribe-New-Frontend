@@ -1,4 +1,4 @@
-import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
+/*import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 import superjson from "superjson";
 
 import { type AppRouter } from "~/server/api/root";
@@ -20,6 +20,7 @@ export function getUrl() {
  *
  * @example type HelloInput = RouterInputs['example']['hello']
  */
+/*
 export type RouterInputs = inferRouterInputs<AppRouter>;
 
 /**
@@ -27,4 +28,6 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  *
  * @example type HelloOutput = RouterOutputs['example']['hello']
  */
+/*
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
+*/

@@ -8,7 +8,7 @@ import { useToggleFocus } from "./hooks/useToggleFocus";
 import { useChat, useChatActions, useChatState } from "~/store/chat.slice";
 import { Button } from "../Buttons/Button";
 import { twJoin } from "tailwind-merge";
-import type { iMessage, iGenerateMessage, iGeneratedResult, ChatOption, iGeneratedResultSimple, Role } from "~/types/chat.types";
+import type { iMessage, iGenerateMessage, iGeneratedResult, ChatOption, iGeneratedResultSimple } from "~/types/chat.types";
 import { generateContent } from "~/api/generate/generate.api";
 import { nanoid } from 'nanoid';
 

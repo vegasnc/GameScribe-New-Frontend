@@ -1,12 +1,13 @@
 import "~/styles/globals.css";
-
 import { Inter, Lato, Barlow_Condensed, Lora } from "next/font/google";
-
-import { TRPCReactProvider } from "~/trpc/react"; import { ColorModeProvider } from "~/providers/ColorModeProvider";
+import { ColorModeProvider } from "~/providers/ColorModeProvider";
 import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
 import SessionProvider from "~/providers/SessionProvider";
+import {  } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import { ReactQueryProvider } from "~/providers/ReactQueryProvider";
+import { Suspense } from "react";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -57,9 +58,11 @@ export default async function RootLayout({
           <PostHogPageView />
           <Toaster />
           <SessionProvider>
-            <TRPCReactProvider>
-              <ColorModeProvider>{children}</ColorModeProvider>
-            </TRPCReactProvider>
+            <ReactQueryProvider>
+              <ColorModeProvider>
+                <Suspense>{children}</Suspense>
+              </ColorModeProvider>
+            </ReactQueryProvider>
           </SessionProvider>
         </body>
       </PHProvider>

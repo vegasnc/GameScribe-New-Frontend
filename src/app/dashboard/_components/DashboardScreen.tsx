@@ -1,5 +1,5 @@
 "use client";
-
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Welcome } from "./Welcome";
 import Dashboard from "./Dashboard";
@@ -11,8 +11,8 @@ const DashboardScreen = () => {
   const page = searchParams.get("page");
 
   const pageMap: PageMap = {
-    dash: <Dashboard />,
-    welcome: <Welcome />,
+    dash: <Suspense><Dashboard /></Suspense>,
+    welcome: <Suspense><Welcome /></Suspense>,
   };
 
   return page ? pageMap[page] : pageMap.dash;

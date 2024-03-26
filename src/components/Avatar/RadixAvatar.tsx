@@ -1,6 +1,5 @@
 import * as Avatar from "@radix-ui/react-avatar";
 import { useSession } from "next-auth/react";
-import { GSIcon } from "../Icons";
 
 type SIZES = "xs" | "sm" | "md" | "lg";
 
@@ -22,17 +21,11 @@ export default function RadixAvatar({ size = "md", src }:AvatarProps) {
 
   return (
     <Avatar.Root className={`${baseStyles} ${sizes[size]}`}>
-      <Avatar.Fallback >
-        <Avatar.Image>
-          <GSIcon />
-        </Avatar.Image>
-      </Avatar.Fallback>
       <Avatar.Image
         className="rounded-full"
         src={!src && userData?.user?.image ? userData.user.image : src }
         alt={userData?.user?.name ?? ""}
       />
-
     </Avatar.Root>
   );
 }

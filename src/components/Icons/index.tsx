@@ -1,4 +1,4 @@
-type SVGComponentProps = {
+export type SVGComponentProps = {
   width?: string;
   height?: string;
 }

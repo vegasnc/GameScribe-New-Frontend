@@ -1,7 +1,7 @@
 import remarkGfm from "remark-gfm";
 import { AnimatePresence, motion } from "framer-motion";
 import Markdown from "react-markdown";
-import { AiStars, GSIcon, IconX } from "~/components/Icons";
+import { AiStars, GSIcon } from "~/components/Icons";
 import { useChatMessages, useChatState } from "~/store/chat.slice";
 import { CHAT_LOADERS } from "./constants";
 import type { iMessage, Role } from "~/types/chat.types";
