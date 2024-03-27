@@ -21,46 +21,44 @@ const Chat = () => {
   } = useChatState();
 
   return (
-    <>
-      <AnimatePresence initial={false} mode="wait">
-        {isChatOpen && (
-          <motion.div
-            className="container relative w-full overflow-y-auto bg-gray-ex-light rounded-[12px]"
-            initial={{ height: 0, opacity: 0, paddingBlock: 0 }}
-            animate={{
-              height: `${HEIGHT}px`,
-              opacity: 1,
-              paddingBlock: "16px",
-              transition: {
-                height: { duration: HEIGHT_DUR },
-                opacity: { duration: OPAC_DUR, delay: OPAC_DELAY },
+    <AnimatePresence initial={false} mode="wait">
+      {isChatOpen && (
+        <motion.div
+          className="container flex flex-col relative h-full overflow-y-auto bg-gray-ex-light w-full rounded-[12px]"
+          //initial={{ height: 0, opacity: 0, paddingBlock: 0 }}
+          animate={{
+            //height: `${HEIGHT}px`,
+            opacity: 1,
+            paddingBlock: "16px",
+            transition: {
+              height: { duration: HEIGHT_DUR },
+              opacity: { duration: OPAC_DUR, delay: OPAC_DELAY },
+            },
+          }}
+          exit={{
+            //height: 0,
+            opacity: 0,
+            padding: 0,
+            transition: {
+              height: {
+                duration: HEIGHT_DUR,
               },
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-              padding: 0,
-              transition: {
-                height: {
-                  duration: HEIGHT_DUR,
-                },
-                opacity: {
-                  duration: OPAC_DUR,
-                },
+              opacity: {
+                duration: OPAC_DUR,
               },
-            }}
-          >
-            <div className={`flex flex-col gap-5 px-3 ${messages.length < 1 ? "h-full" : ""}`}>
-              {messages.length < 1 && <div className="flex flex-col gap-3 text-text-60 h-full w-full items-center justify-center"><GSIcon height="100" width="100"/>Start Adventuring</div>}
-              {messages.map((msg) => (
-                <Message key={msg.id} msg={msg} />
-              ))}
-              {isLoading && <p>{CHAT_LOADERS[~~(Math.random() * CHAT_LOADERS.length - 1)]}</p>} 
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            },
+          }}
+        >
+          <div className={`flex flex-col gap-5 px-3 w-full ${messages.length < 1 ? "h-full" : ""}`}>
+            {messages.length < 1 && <div className="flex flex-col gap-3 text-text-60 h-full w-full items-center justify-center"><GSIcon height="100" width="100"/>Start Adventuring</div>}
+            {messages.map((msg) => (
+              <Message key={msg.id} msg={msg} />
+            ))}
+            {isLoading && <p>{CHAT_LOADERS[~~(Math.random() * CHAT_LOADERS.length - 1)]}</p>} 
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

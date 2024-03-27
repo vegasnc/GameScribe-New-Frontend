@@ -15,19 +15,19 @@ const TestPage = () => {
     <Suspense>
       <div className="flex h-screen w-full flex-col relative">
         <div className="h-[70px] w-full border-b-2 border-slate-300">
-          <div className="h-full flex justify-between items-center px-3 sm:px-20">
+          <div className="h-full flex justify-between items-center px-3">
             <div className="text-text">
               <GSLogo />
             </div>
             <ToggleMode />
           </div>
         </div>
-        <div className="flex h-full flex-col items-center bg-bg px-3 py-5">
+        <div className="flex h-full max-h-full grow overflow-hidden flex-col justify-between items-center bg-bg px-3 py-5 w-full">
           <div className="flex h-full w-full justify-between gap-3">
-            <div className="hidden sm:flex h-full overflow-y-auto">
+            <div className="hidden sm:flex h-full overflow-y-auto w-1/4">
               <History />
             </div>
-            <div className="flex flex-col w-full justify-between">
+            <div className="flex flex-col w-full items-start gap-3">
               <ChatMode />
               <Chat />
               <Input />
