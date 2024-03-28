@@ -8,7 +8,7 @@ import { useToggleFocus } from "./hooks/useToggleFocus";
 import { useChat, useChatActions, useChatState } from "~/store/chat.slice";
 import { Button } from "../Buttons/Button";
 import { twJoin } from "tailwind-merge";
-import type { iMessage, iGenerateMessage, iGeneratedResult, ChatOption, iGeneratedResultSimple } from "~/types/chat.types";
+import type { iMessage, iGenerateMessage, iGeneratedResult, ChatOption, iGeneratedResultSimple, Role } from "~/types/chat.types";
 import { generateContent } from "~/api/generate/generate.api";
 import { nanoid } from 'nanoid';
 
@@ -34,7 +34,10 @@ const Input = () => {
   const mutation = useMutation({
     mutationFn: async (data: iGenerateMessage) => {
       setIsLoading(true);
-      return await generateContent(chatMode as ChatOption, [data]);
+      const msgHistory: {role: Role, content: string}[] = [];
+      chat.messages.forEach((msg) => msgHistory.push({ role: msg.role, content: msg.content }));
+      console.log(msgHistory)
+      return await generateContent(chatMode as ChatOption, msgHistory);
     },
     onSuccess: (data: iGeneratedResult | iGeneratedResultSimple) => {
       let res;
