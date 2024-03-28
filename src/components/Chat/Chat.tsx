@@ -83,7 +83,7 @@ export const Message = ({ msg }: MessageProps) => {
     },
   };
   return (
-    <div className="flex h-full gap-5">
+    <div className="flex h-full gap-5 text-sm">
       <div className="align-start flex gap-2">
         <div className="text-theme">{role[msg.role].avatar}</div>
       </div>

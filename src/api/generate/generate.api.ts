@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { AxiosResponse } from "axios";
-import type { iGenerateMessage, iGeneratedResult, iGeneratedResultSimple } from "~/types/chat.types";
+import type { Role, iGenerateMessage, iGeneratedResult, iGeneratedResultSimple } from "~/types/chat.types";
 import { API_URL } from "../constants";
 import type { ChatOption } from "~/types/chat.types";
 
@@ -26,6 +26,24 @@ export const generateContent = async (mode: ChatOption, data: iGenerateMessage[]
     default:
       break;
   }
-  const res: AxiosResponse<iGeneratedResult> = await axios.post(`${API_URL}${endpoint}`, {message_list: data, last_content: ""}, {});
+
+  const lastUserMsg = findLast(data, "user");
+
+  // uncomment when context is ready
+  // const lastAssistantMessage = findLast(data, "assistant");
+  
+  const res: AxiosResponse<iGeneratedResult> = await axios.post(`${API_URL}${endpoint}`, {message_list: lastUserMsg !== -1 ? [lastUserMsg] : "", last_content: "" }, {});
   return res.data;
+}
+
+const findLast = (arr: iGenerateMessage[], key: Role): iGenerateMessage | number => {
+  console.log(arr);
+  if (arr.length < 1) return -1;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] === undefined) return -1;
+    else if (arr[i]?.role === key) {
+      return arr[i]!;
+    }
+  }
+  return -1;
 }
