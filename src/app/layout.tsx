@@ -8,6 +8,7 @@ import {  } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "~/providers/ReactQueryProvider";
 import { Suspense } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -60,7 +61,10 @@ export default async function RootLayout({
           <SessionProvider>
             <ReactQueryProvider>
               <ColorModeProvider>
-                <Suspense>{children}</Suspense>
+                <Suspense>
+                  {children}
+                  <SpeedInsights/>
+                </Suspense>
               </ColorModeProvider>
             </ReactQueryProvider>
           </SessionProvider>
