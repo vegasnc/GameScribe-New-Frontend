@@ -14,7 +14,7 @@ const TestPage = () => {
   return (
     <Suspense>
       <div className="flex h-[100dvh] sm:h-screen w-full flex-col relative">
-        <div className="h-[70px] w-full border-b-2 border-slate-300">
+        <div className="h-[70px] w-full border-b-0 border-slate-300">
           <div className="h-full flex justify-between items-center px-3">
             <div className="text-text">
               <GSLogo />
