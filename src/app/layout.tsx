@@ -3,6 +3,7 @@ import { Inter, Lato, Barlow_Condensed, Lora } from "next/font/google";
 import { ColorModeProvider } from "~/providers/ColorModeProvider";
 import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
+import PostHogPageLeave from "./PostHogPageLeave";
 import SessionProvider from "~/providers/SessionProvider";
 import {  } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
@@ -57,6 +58,7 @@ export default async function RootLayout({
       <PHProvider>
         <body>
           <PostHogPageView />
+          <PostHogPageLeave />
           <Toaster />
           <SessionProvider>
             <ReactQueryProvider>
