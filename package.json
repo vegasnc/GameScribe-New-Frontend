@@ -37,7 +37,7 @@
     "nanoid": "^5.0.6",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
-    "posthog-js": "^1.108.3",
+    "posthog-js": "^1.116.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.50.1",
