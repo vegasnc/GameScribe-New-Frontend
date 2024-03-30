@@ -4,6 +4,7 @@ import { Chat, ChatMode, History, Input } from "~/components/Chat";
 import { GSLogo } from "~/components/Icons";
 import { ToggleMode } from "~/components/Navbar/Nav";
 import { useChatState } from "~/store/chat.slice";
+import Head from 'next/head'
 
 const TestPage = () => {
   const { setIsChatOpen, setIsHistoryOpen } = useChatState();
@@ -13,6 +14,9 @@ const TestPage = () => {
   }, []) //eslint-disable-line
   return (
     <Suspense>
+      <Head>
+      <meta property="og:image" content="public/meta_image_placeholder.png.png"></meta>  
+      </Head>
       <div className="flex h-[100dvh] sm:h-screen w-full flex-col relative">
         <div className="h-[70px] w-full border-b-0 border-slate-300">
           <div className="h-full flex justify-between items-center px-3">
