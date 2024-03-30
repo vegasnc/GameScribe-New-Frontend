@@ -78,7 +78,7 @@ export const Message = ({ msg }: MessageProps) => {
     },
     assistant: {
       avatar: <GSAvatar src={AiStars} size="xs" />,
-      name: "GameScribe AI",
+      name: "GameScribe",
       format: <Markdown className={"markdown w-full"} remarkPlugins={[remarkGfm]}>{msg.content}</Markdown>
     },
   };
