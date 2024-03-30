@@ -43,9 +43,9 @@ export const metadata = {
   title: "GameScribe API Test Interface",
   description: "GameScribe API Test Interface",
   icons: [{ rel: "icon", url: "/favicon.ico" }], //TODO @DomJF45 likely we'll want to change this when Jackson gets us a more official one and in more sizes, but this should work for now
-  openGraph: {
+  og: {
     title: 'GameScribe API Test Interface',
-    description: 'GameScribe API Test Interface',//TODO @DomJF45 ideally we wouldn't have to repeat this  so we may want to clean up how we're handling this metadata in the future
+    description: 'GameScribe API Test Interface',//TODO @DomJF45 ideally we wouldn't have to repeat this so we may want to clean up how we're handling this metadata in the future
     image:"public/meta_image_placeholder.png",
   },//TODO @DomJF45 we may want to host this somewhere instead and will probably replace it, but I put this as a stand-in for now
   url: "https://gamescribe.dev",
