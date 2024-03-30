@@ -35,7 +35,7 @@ export const ToggleMode = () => {
   function toggletheme() {
     posthog.capture(
       'theme_toggled',
-      {colorMode: colorMode})
+      {colorMode: { colorMode }})
   }
 
   return (
