@@ -68,6 +68,8 @@ const Input = () => {
   })
 
   const handleSendMessage = () => {
+    posthog.capture(
+      'send_message',) 
     if (!newMessage) return;
     const newMsg: iMessage = {
       content: newMessage,
@@ -92,11 +94,6 @@ const Input = () => {
 
   const posthog = usePostHog()
 
-  function sendmessage() {
-    posthog.capture(
-      'send_message',) 
-  }
-
   return (
     <div className={"flex items-center w-full justify-between"}>
       <div className={twJoin("flex items-center w-full rounded-[8px]", isChatOpen ? "bg-gray-ex-light p-[10px]": "bg-transparent")}>
@@ -114,7 +111,7 @@ const Input = () => {
           tabIndex={0}
         />
         {isChatOpen ? (
-          <Button styles={"w-max"} onClick={() => { handleSendMessage(); sendmessage() }} loading={isLoading}>Submit</Button> // TODO: @DomJF45 I want to capture this event and change the Submit button to an upward Arrow similar to ChatGPT but I'm not sure I did it correctly. 
+          <Button styles={"w-max"} onClick={() => { handleSendMessage() }} loading={isLoading}>Submit</Button> // TODO: @DomJF45 I want to capture this event and change the Submit button to an upward Arrow similar to ChatGPT but I'm not sure I did it correctly. 
         ) : (
           <Shortcut keys={["⌘A", "⌘⏎"]} />
         )}
