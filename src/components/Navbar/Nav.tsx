@@ -7,6 +7,7 @@ import { MoonIcon } from "../Icons";
 import { ChevronDown } from "../Icons";
 import { SunIcon } from "../Icons";
 import { AnimatePresence } from "framer-motion";
+import { usePostHog } from 'posthog-js/react'
 
 export const Nav = () => {
   return (
@@ -28,12 +29,21 @@ export const Nav = () => {
 export const ToggleMode = () => {
   const { colorMode, toggleColorMode } = useDarkMode();
 
+  // TODO: check my work on this and update to differentiate between toggledark and togglelight separately @DomJF45
+  const posthog = usePostHog()
+  
+  function toggletheme() {
+    posthog.capture(
+      'theme_toggled',
+      {colorMode: colorMode})
+  }
+
   return (
     <AnimatePresence initial={false} mode="wait">
       <motion.div
         key={colorMode}
         className="border-1 flex h-[25px] w-[25px] cursor-pointer items-center p-1 text-theme"
-        onClick={() => toggleColorMode()}
+        onClick={() => { toggleColorMode(); toggletheme(); }}
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 10, opacity: 0 }}
