@@ -46,7 +46,7 @@ export const metadata = {
   openGraph: {
     images: [{ url: "/meta_image_placeholder.png" }],
     url: "https://gamescribe.dev",
-  }, //TODO @DomJF45 may need to fix and replace the images
+  }, //TODO @DomJF45 we will replace the images with Jackson's official ones when we get them
   robots: "noindex, follow", // set to keep us out of search engines until we're ready
 };
 
