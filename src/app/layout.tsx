@@ -5,11 +5,11 @@ import { PHProvider } from "~/providers/PostHogProvider";
 import PostHogPageView from "./PostHogPageView";
 import PostHogPageLeave from "./PostHogPageLeave";
 import SessionProvider from "~/providers/SessionProvider";
-import {  } from "@tanstack/react-query";
+import {} from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryProvider } from "~/providers/ReactQueryProvider";
 import { Suspense } from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // display: swap allows font to default to inter
 const inter = Inter({
@@ -43,9 +43,11 @@ export const metadata = {
   title: "GameScribe API Test Interface",
   description: "GameScribe API Test Interface",
   icons: [{ rel: "icon", url: "/favicon.ico" }], //TODO @DomJF45 likely we'll want to change this when Jackson gets us a more official one and in more sizes, but this should work for now
-  image:"public/meta_image_placeholder.png", //TODO @DomJF45 we may want to host this somewhere instead and will probably replace it, but I put this as a stand-in for now
-  url: "https://gamescribe.dev",
-  robots: "noindex, follow" // set to keep us out of search engines until we're ready
+  openGraph: {
+    images: [{ url: "https://gamescribe.dev/og-image.png" }],
+    url: "https://gamescribe.dev",
+  }, //TODO @DomJF45 we may want to host this somewhere instead and will probably replace it, but I put this as a stand-in for now
+  robots: "noindex, follow", // set to keep us out of search engines until we're ready
 };
 
 export default async function RootLayout({
@@ -68,7 +70,7 @@ export default async function RootLayout({
               <ColorModeProvider>
                 <Suspense>
                   {children}
-                  <SpeedInsights/>
+                  <SpeedInsights />
                 </Suspense>
               </ColorModeProvider>
             </ReactQueryProvider>
