@@ -44,7 +44,7 @@ export const metadata = {
   description: "GameScribe API Test Interface",
   icons: [{ rel: "icon", url: "/favicon.ico" }], //TODO @DomJF45 likely we'll want to change this when Jackson gets us a more official one and in more sizes, but this should work for now
   openGraph: {
-    images: [{ url: "/public/meta_image_placeholder.png" }],
+    images: [{ url: "/meta_image_placeholder.png" }],
     url: "https://gamescribe.dev",
   }, //TODO @DomJF45 may need to fix and replace the images
   robots: "noindex, follow", // set to keep us out of search engines until we're ready
