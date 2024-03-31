@@ -46,7 +46,7 @@ export const metadata = {
   openGraph: {
     images: [{ url: "/public/meta_image_placeholder.png" }],
     url: "https://gamescribe.dev",
-  }, //TODO @DomJF45 we may want to host this somewhere instead and will probably replace it, but I put this as a stand-in for now
+  }, //TODO @DomJF45 may need to fix and replace the images
   robots: "noindex, follow", // set to keep us out of search engines until we're ready
 };
 
