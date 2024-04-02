@@ -13,7 +13,8 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_746535f1ebf5c76"
+    
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
