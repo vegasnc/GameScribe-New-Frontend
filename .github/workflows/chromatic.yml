@@ -15,9 +15,9 @@ jobs:
 
       - name: Install dependencies
         # ⚠️ Pick one of these, matching the package manager for your project
-        run: yarn install --exit-zero-on-changes
+        run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Run Chromatic
+      - name: Run Chromatic --exit-zero-on-changes
         uses: chromaui/action@latest
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
