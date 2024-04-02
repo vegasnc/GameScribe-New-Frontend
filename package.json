@@ -22,6 +22,7 @@
     "@prisma/adapter-planetscale": "^5.6.0",
     "@prisma/client": "^5.6.0",
     "@radix-ui/react-avatar": "^1.0.4",
+    "@sentry/nextjs": "^7.105.0",
     "@storybook/addon-a11y": "^7.6.13",
     "@storybook/addon-designs": "^7.0.9",
     "@storybook/addon-storysource": "^7.6.13",
