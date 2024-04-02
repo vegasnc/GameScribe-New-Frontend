@@ -29,7 +29,7 @@ const sentryOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options
   silent: true, // Suppresses source map uploading logs during build
   org: "gamescribe",
-  project: "javascript-nextjs",
+  project: "gamescribe",
 };
 
 const nextConfigEnhanced = withSentryConfig(config, sentryOptions, {
