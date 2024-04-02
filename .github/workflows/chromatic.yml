@@ -17,7 +17,7 @@ jobs:
         # ⚠️ Pick one of these, matching the package manager for your project
         run: yarn install --immutable --immutable-cache --check-cache
 
-      - name: Run Chromatic || true
+      - name: Run Chromatic
         uses: chromaui/action@latest
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
