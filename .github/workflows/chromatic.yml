@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies
         # ⚠️ Pick one of these, matching the package manager for your project
-        run: bun i
+        run: npm install
 
       - name: Run Chromatic
         uses: chromaui/action@latest
