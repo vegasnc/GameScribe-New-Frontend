@@ -1,11 +1,11 @@
 @storybook/cli v7.6.17
 
-info => Cleaning outputDir: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--8988-xISlHvmK1crH
+info => Cleaning outputDir: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm
 info => Loading presets
 info => Building manager..
-info => Manager built (116 ms)
+info => Manager built (113 ms)
 info => Building preview..
-info => Copying static files: /Users/ericsnapper/Developer/ttrpg-ai-companion/GameScribe/node_modules/@storybook/manager/static at /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--8988-xISlHvmK1crH/sb-common-assets
+info => Copying static files: /Users/ericsnapper/Developer/ttrpg-ai-companion/GameScribe/node_modules/@storybook/manager/static at /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm/sb-common-assets
 info Using Babel compiler
 info Addon-docs: using MDX2
 info => Using implicit CSS loaders
@@ -26,5 +26,5 @@ WARN       runtime~main.6dee6eda.iframe.bundle.js
 WARN       260.f19b0b16.iframe.bundle.js
 WARN       main.14ad00bf.iframe.bundle.js
 WARN 
-info => Preview built (8.48 s)
-info => Output directory: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--8988-xISlHvmK1crH
+info => Preview built (9.31 s)
+info => Output directory: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm
