@@ -13,7 +13,8 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_746535f1ebf5c76"
+    "chromatic": "npx chromatic --project-token=chpt_1c84651a801dec0 --exit-once-uploaded"
+    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -71,7 +72,7 @@
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10.4.14",
-    "chromatic": "^10.7.1",
+    "chromatic": "^11.3.0",
     "eslint": "^8.54.0",
     "eslint-config-next": "^14.0.4",
     "eslint-plugin-storybook": "^0.6.15",
