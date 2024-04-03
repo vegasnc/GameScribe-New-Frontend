@@ -1,6 +1,6 @@
 {
-  "name": "homebrew-studio",
-  "version": "0.1.0",
+  "name": "GameScribe",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,7 +13,8 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_1c84651a801dec0"
+    "chromatic": "npx chromatic --project-token=chpt_1c84651a801dec0",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@chromatic-com/storybook": "^1.2.26",
@@ -25,8 +26,10 @@
     "@radix-ui/react-avatar": "^1.0.4",
     "@sentry/nextjs": "^7.105.0",
     "@storybook/addon-a11y": "^8.0.5",
+    "@storybook/addon-actions": "^8.0.5",
     "@storybook/addon-designs": "^7.0.9",
     "@storybook/addon-storysource": "^8.0.5",
+    "@storybook/test-runner": "^0.17.0",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/client": "^10.43.6",
@@ -56,11 +59,19 @@
     "zustand": "^4.5.1"
   },
   "devDependencies": {
+    "@storybook/addon-backgrounds": "^8.0.5",
+    "@storybook/addon-controls": "^8.0.5",
+    "@storybook/addon-docs": "^8.0.5",
     "@storybook/addon-essentials": "^8.0.5",
     "@storybook/addon-interactions": "^8.0.5",
+    "@storybook/addon-jest": "^8.0.5",
     "@storybook/addon-links": "^8.0.5",
+    "@storybook/addon-measure": "^8.0.5",
     "@storybook/addon-onboarding": "^8.0.5",
     "@storybook/addon-styling-webpack": "^0.0.6",
+    "@storybook/addon-themes": "^8.0.5",
+    "@storybook/addon-toolbars": "^8.0.5",
+    "@storybook/addon-viewport": "^8.0.5",
     "@storybook/blocks": "^8.0.5",
     "@storybook/nextjs": "^8.0.5",
     "@storybook/react": "^8.0.5",
@@ -83,6 +94,8 @@
     "prettier-plugin-tailwindcss": "^0.5.7",
     "prisma": "^5.6.0",
     "storybook": "latest",
+    "storybook-addon-live-examples": "^2.0.2",
+    "storybook-addon-performance": "^0.17.3",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.1.6"
   },

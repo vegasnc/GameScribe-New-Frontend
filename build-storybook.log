@@ -1,30 +1,37 @@
-@storybook/cli v7.6.17
+@storybook/cli v8.0.5
 
-info => Cleaning outputDir: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm
+info => Cleaning outputDir: ../../../../../var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--89117-bc4MroYY1oOt
 info => Loading presets
 info => Building manager..
 info => Manager built (113 ms)
 info => Building preview..
-info => Copying static files: /Users/ericsnapper/Developer/ttrpg-ai-companion/GameScribe/node_modules/@storybook/manager/static at /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm/sb-common-assets
-info Using Babel compiler
-info Addon-docs: using MDX2
 info => Using implicit CSS loaders
+info => Using SWC as compiler
 info => Using default Webpack5 setup
+WARN This case clause will never be evaluated because it duplicates an earlier case clause [duplicate-case]
+WARN 
+WARN 103.22fe9206.iframe.bundle.js:29972:2:
+WARN   29972 | 		case 'group':
+WARN 
+WARN Suggestion: 
+WARN 
+WARN Notes:
+WARN [103.22fe9206.iframe.bundle.js:29907:2] The earlier case clause is here:
+WARN Suggestion: 
+WARN Line text:
+WARN 		case 'group':
+WARN 
 WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
 WARN This can impact web performance.
 WARN Assets: 
-WARN   static/media/addon-library.7d60eaf1.png (456 KiB)
-WARN   609.4587640b.iframe.bundle.js (824 KiB)
-WARN   71.7a6e181d.iframe.bundle.js (583 KiB)
-WARN   171.4a8cfaf8.iframe.bundle.js (715 KiB)
-WARN   260.f19b0b16.iframe.bundle.js (934 KiB)
-WARN   203.7cb94b23.iframe.bundle.js (823 KiB)
+WARN   609.8966810c.iframe.bundle.js (564 KiB)
+WARN   103.46dfa866.iframe.bundle.js (3.33 MiB)
 WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
 WARN Entrypoints:
-WARN   main (1010 KiB)
-WARN       runtime~main.6dee6eda.iframe.bundle.js
-WARN       260.f19b0b16.iframe.bundle.js
-WARN       main.14ad00bf.iframe.bundle.js
+WARN   main (3.43 MiB)
+WARN       runtime~main.33310c7e.iframe.bundle.js
+WARN       103.46dfa866.iframe.bundle.js
+WARN       main.67a7a48f.iframe.bundle.js
 WARN 
-info => Preview built (9.31 s)
-info => Output directory: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--15822-k31VIIklchGm
+info => Preview built (4.21 s)
+info => Output directory: /var/folders/5_/ttvrk6jd3rjbbx3r18wfz3mw0000gn/T/chromatic--89117-bc4MroYY1oOt
