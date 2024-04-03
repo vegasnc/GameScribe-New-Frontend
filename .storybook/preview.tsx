@@ -13,15 +13,15 @@ const lato = Lato({
   weight: "700",
   subsets: ["latin"],
   variable: "--button-font",
-  display: "swap"
-})
+  display: "swap",
+});
 
 const barlow_condensed = Barlow_Condensed({
   weight: "400",
   subsets: ["latin"],
   variable: "--stat-font",
   display: "swap",
-})
+});
 
 const preview: Preview = {
   parameters: {
@@ -35,7 +35,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <main className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}>
+      <main
+        className={`${inter.className} ${lato.variable} ${barlow_condensed.variable}`}
+      >
         <Story />
       </main>
     ),
