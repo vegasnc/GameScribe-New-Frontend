@@ -37,7 +37,6 @@ const Input = () => {
       setIsLoading(true);
       const msgHistory: {role: Role, content: string}[] = [];
       chat.messages.forEach((msg) => msgHistory.push({ role: msg.role, content: msg.content }));
-      console.log(msgHistory)
       return await generateContent(chatMode as ChatOption, msgHistory);
     },
     onSuccess: (data: iGeneratedResult | iGeneratedResultSimple) => {

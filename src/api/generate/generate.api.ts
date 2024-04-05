@@ -27,17 +27,32 @@ export const generateContent = async (mode: ChatOption, data: iGenerateMessage[]
       break;
   }
 
-  const lastUserMsg = findLast(data, "user");
-
   // uncomment when context is ready
-  // const lastAssistantMessage = findLast(data, "assistant");
+  const lastAssistantMessage = findLast(data, "assistant");
+  let lastContent = "";
+  if ( lastAssistantMessage != -1 ) {
+    const obj = lastAssistantMessage as iGenerateMessage;
+
+    switch (mode) {
+      case "Monster":
+        lastContent = "<monster>" + obj.content; + "</monster> \n <dalle></dalle>";
+        break;
+      default:
+        break;
+    }
+  }
+  // console.log(">>>lastAssistantMessage", lastAssistantMessage.content)
   
-  const res: AxiosResponse<iGeneratedResult> = await axios.post(`${API_URL}${endpoint}`, {message_list: lastUserMsg !== -1 ? [lastUserMsg] : "", last_content: "" }, {});
+  const res: AxiosResponse<iGeneratedResult> = await axios.post(
+    `${API_URL}${endpoint}`, 
+    {
+      message_list: data, 
+      last_content: lastContent 
+    }, {});
   return res.data;
 }
 
 const findLast = (arr: iGenerateMessage[], key: Role): iGenerateMessage | number => {
-  console.log(arr);
   if (arr.length < 1) return -1;
   for (let i = arr.length - 1; i >= 0; i--) {
     if (arr[i] === undefined) return -1;

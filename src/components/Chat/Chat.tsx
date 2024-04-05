@@ -6,6 +6,7 @@ import { useChatMessages, useChatState } from "~/store/chat.slice";
 import { CHAT_LOADERS } from "./constants";
 import type { iMessage, Role } from "~/types/chat.types";
 import GSAvatar from "~/components/Avatar/Avatar";
+import { useEffect } from "react";
 
 // vars for controlling duration of animation
 const HEIGHT = 508;
@@ -15,6 +16,7 @@ const OPAC_DELAY = 0.15;
 
 const Chat = () => {
   const messages = useChatMessages();
+
   const {
     isLoading,
     isChatOpen,
