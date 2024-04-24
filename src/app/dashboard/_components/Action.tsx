@@ -55,7 +55,7 @@ export const Action = ({ action }: ActionProps) => {
     }
 
     setChat({id: nanoid(), title: action.prompt, date: new Date(Date.now()).toTimeString(), messages: [newMessage]})
-    mutation.mutate({role: newMessage.role, content: newMessage.content});
+    mutation.mutate(newMessage);
     // handle mutation
   }
 
